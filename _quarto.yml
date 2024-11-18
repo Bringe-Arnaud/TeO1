@@ -1,6 +1,6 @@
 project: 
   type: website
-  output-dir: public
+  output-dir: docs
 
 lang: fr
 
@@ -22,10 +22,11 @@ website:
            href: index.qmd
          - text: "Métadonnées"
            href: metadata.qmd
-      - section: "{{<fa solid person-chalkboard>}} Support de formation"
+      - section: "{{<fa solid  person-chalkboard>}} Support de formation"
         contents:
-          - href: support.qmd
-      - section: "{{<fa solid toolbox>}} Materiel"
+          - href: support-061124.qmd
+          - href: graphs.qmd
+      - section: "{{<fa solid toolbox>}} Matériel"
         contents:
           - text: "Dictionnaire des codes"
             href: dico_code.qmd
@@ -60,7 +61,7 @@ toc: true
 toc-depth: 4
 
 
-bibliography: 
+bibliography:   
   main: biblio1.bib
   software: biblio2.bib
 

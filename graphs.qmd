@@ -1,0 +1,176 @@
+---
+title: "Graphiques produits"
+---
+
+On indique les packages à utiliser pour l'exécution de ce programme. Tidyverse sera utilisé pour la gestion des données, questionr pour le calcul de statiques pondérées
+  
+``` {r import}
+# Packages
+library(tidyverse)
+library(questionr)
+```
+
+On localise les bases de données sous R, deux formats principaux .RData et .rds
+
+
+``` {r load}
+
+###############
+# Localisation
+###############
+Rep="./materiel/"
+File="TEO1_v4.RData"
+
+# Montée en table
+load(paste0(Rep,File))
+
+```
+
+
+Une brève description de la base de données
+
+``` {r descr}
+
+
+# Liste des variables
+names(teo)
+
+# Pondération POIDSSI
+X=data.frame(wtd.table(teo$GROUP1,weights=teo$POIDSI))
+
+
+
+```
+
+
+Ci après, la création des variables nécessaires, en fonction des variables existantes (GROUP1 pour le type de population, DISCRI et group2 utlisées pour ces créations de variables synthétiques)
+
+
+``` {r crevars}
+
+# Type de population
+teo=mutate(teo,group2=case_when(
+  GROUP1 %in% c("1","2") ~ "Immigrés (ou natif DOM)",
+  GROUP1 == "5" ~ "Groupe majoritaire", 
+  GROUP1 %in% c("3","4") & (regionnaism2_11t =="France métro" | regionnaisp2_11t =="France métro")  ~ "Descendant d'un immigré",
+  GROUP1 %in% c("3","4") & (regionnaism2_11t !="France métro" & regionnaisp2_11t !="France métro")  ~ "Descendant 2 immigrés"
+))
+
+
+# Regroupement modalités DISCRI
+teo = teo %>% mutate(discri=ifelse(D_DISCRI %in% c("1","2"),"1","0")) %>%
+  filter(D_DISCRI %in% c("1","2","3"))
+
+# variable origine
+teo=mutate(teo,origine=case_when(
+  GROUP1 %in% c("3","4") & regionnaise2_11t =="France métro" &  regionnaisp2_11t !="France métro"  ~ regionnaisp2_11t,
+  GROUP1 %in% c("3","4") & regionnaise2_11t =="France métro" &  regionnaisp2_11t =="France métro" &  regionnaism2_11t !="France métro" ~ regionnaism2_11t,
+  TRUE  ~ group2
+))
+
+
+
+```
+
+Quelques tris à plat :
+
+```{r freq}
+
+# Effectifs bruts (non pondérés)
+freq(teo$origine)
+freq(teo$GROUP1)
+freq(teo$group2)
+
+```
+
+
+Construction 1er graphique Pop&Soc
+
+
+```{r graph1}
+
+X0 = teo %>%
+  group_by(group2) %>%
+  count(discri,wt=POIDSI) %>%
+  mutate(wtd_prop=100*n/sum(n)) %>%
+  filter(discri==1 & !is.na(group2))
+
+
+
+# Idem, avec les pourcentages à coté
+X0 %>%
+  ggplot(aes(x=group2,y=wtd_prop)) +
+  geom_bar(stat="identity") +
+  xlab("Origine de l'enquêté") +
+  ylab("En %") +
+  ylim(0,50) +
+  ggtitle("Proportion de personnes déclarant avoir subi des discriminations") +
+  geom_text(aes(label=sprintf('%0.0f%%',wtd_prop)), position = position_dodge(width = 1), hjust=-0.1) +
+  coord_flip()
+
+
+```
+
+
+Construction 2eme graphique
+
+```{r graph2}
+
+# Immigré ou natif d'un DOM (Chiffres en NOIR)
+X1 = teo %>%
+  filter(GROUP1 %in% 1:2) %>%
+  group_by(regionnaise2_11t) %>%
+  count(discri,wt=POIDSI) %>%
+  mutate(wtd_prop=100*n/sum(n,na.rm=T)) %>%
+  filter(discri==1)
+
+X1 = X1 %>%
+  rename(origine=regionnaise2_11t)%>%
+  mutate(type="Immigré")
+
+# Fille ou fils d'immigré (Chiffres en ORANGE)
+X2 = teo %>%
+  group_by(origine) %>%
+  count(discri,wt=POIDSI) %>%
+  mutate(wtd_prop=100*n/sum(n,na.rm=T))%>%
+  filter(discri==1)
+
+X2 = X2 %>%
+  filter( origine !="Ne sait pas")%>%
+  mutate(type="Fils ou fille d'immigré")
+
+# Jonction des résultats
+X3=bind_rows(X1,X2)
+
+# Affichage graphique
+ggplot(X3) +
+  
+  # On représente la proportion de personnes qui se sentent discriminées (y) selon l'origine (x)
+  # Ceci selon le type de personne immigrée (type)
+  aes(x = origine, fill = type, y = wtd_prop) +
+  
+  # Mode de représentation = Histogramme
+  geom_bar(stat="identity",position = "dodge") +
+  
+  # Couleurs indiquéex explicitement
+  scale_fill_manual(values = c(`Fils ou fille d'immigré` = "#D3781E", 
+                               Immigré = "#11090E")) +
+  
+  # Formattage des pourcentages et affichage à coté des barres
+  geom_text(aes(label=sprintf('%0.0f%%',wtd_prop)),
+            position = position_dodge(width = 1), hjust=-0.1) +
+  
+  # Titre du graphique et des axes, limite de l'axe vertical
+  labs(title = "Proportion de personnes déclarant avoir subi des discriminations") +
+  ylim(0,50) +
+  xlab("Origine de l'enquêté") +
+  ylab("En %") +
+  
+  # On retourne le graphique
+  coord_flip() +
+  
+  # Position de la légende
+  theme(legend.position="bottom") 
+
+
+``` 

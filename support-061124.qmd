@@ -1,0 +1,814 @@
+---
+title: "Débuter avec R"
+subtitle: "Support de formation"
+---
+
+## Présentation de R et Rstudio
+
+Logiciel R créé dans les années 1990 par Robert Gentleman & Ross Ihaka. Développé depuis 1997 par la "R-core team"
+
+-   Dernière Version 4
+
+-   Logiciel libre et gratuit permettant de faire des traitements de données statistiques
+
+-   Ouvert : tout utilisateur peut ajouter ses fonctions personnelles
+
+-   Transparent : l'utilisateur a accès au code source des fonctions
+
+-   Multiplateforme : Windows, Linux, Mac
+
+-   En constante évolution
+
+## Interface de base R
+
+![](images/im_R.png)
+
+Interface R de base pour coder. On peut l'utiliser comme calculatrice.
+
+**Installation** obligatoire (<https://cran.r-project.org/bin/windows/base/>) avant de pouvoir installer l'interface Rstudio (<https://rstudio.com/products/rstudio/download/>), plus conviviale que nous allons utiliser.
+
+## Interface R Studio
+
+![](images/im_Rstudio.png)
+
+## Syntaxe R
+
+-   R est sensible à la casse\
+-   Ctrl entrée (Windows) ou Cmd entrée (Mac) pour soumettre le code ou bouton Run\
+-   Commentaire: #commentaires\
+-   Pour les chemins il faut inverser les antislash par des slash: "D:/R/Formation_R"\
+-   Les valeurs manquantes: NA, is.na\
+-   Opérateurs permis : ==, \<, \>, !=, %in%\
+-   Opérateurs logiques : &, \|, !\
+
+## Syntaxe R
+
+-   F1 sur une fonction R afin d'être dirigé directement vers l'aide ou soumettre ?nomdelafonction
+-   script R : où vous écrivez votre code, enregistré sous .R (s'ouvre avec n'importe quel éditeur de texte)
+-   Rmarkdown ou Quarto: pour mettre en forme des documents contenant à la fois du texte, des instructions R et le résultat fourni par R.
+
+## Créer son répertoire de travail
+
+-   On peut dire au logiciel où se trouve nos fichiers\
+    `setwd("D:/formation/R")`
+
+-   Il est conseillé de créer un nouveau projet (File: New project) lorsque vous commencez un nouveau traitement, tous vos objets R seront sauvegardés (programmes, images, sorties) au même endroit.
+
+-   La commande getwd indique le répertoire sur lequel vous travaillez: `getwd()`
+
+-   Informer en début ou fin de programme quelles versions de R et de packages on utilise: `sessionInfo()`
+
+## Installer et activer des packages
+
+En clic bouton: cliquer dans la fenêtre en bas à droite de R Studio sur l'onglet Packages, cliquer sur Install et écrire le nom du package
+
+En code :\
+`install.packages("questionr")`\
+Ne pas oublier les guillemets entre le nom du package.
+
+Attention ne pas oublier qu'à chaque fois que vous ouvrez R, et après avoir installer les packages, il faut les charger avec la commande `library`\
+
+```{r,warning=FALSE}
+#| echo: true
+library(questionr)
+```
+
+Ou cocher les packages en bas à droite de votre Rstudio dans l'onglet "Packages"
+
+## Importer des données
+
+Vous pouvez importer en clic bouton un fichier texte, excel, SPSS, SAS ou Stata (menu File: Import Dataset).
+
+Importer un fichier Excel: cliquer sur le bouton browse et selectionner son fichier: ![](images/import_excel.png)
+
+## Importer des données
+
+Recupérer le code avec un copier-coller:\
+`library(readxl)`\
+`idf <- read_excel("idf.xlsx")`
+
+Importer un fichier texte: En clic bouton: File : Import Dataset : From Text(base)\
+En code: `temperature <-read.table("temperature.txt",header=TRUE, sep="\t", na.strings="NA", dec=",")` header : intitules des variables sep : séparateur de colonnes dec : séparateur de décimal
+
+Ou un fichier CSV:\
+`smp<- read.csv2("smp1.csv")`
+
+## Décrire ses données
+
+Nous allons utiliser le fichier d'exemple TEO
+
+```{r,echo=TRUE}
+load("./materiel/TEO1_v4.RData")
+```
+
+Pour copier la table sous un autre nom par exemple
+
+```{r}
+FPA <- teo
+```
+
+Le tableau individus x variables sont des data.frame dans R
+
+Tapez le nom du tableau de données puis entrée : affiche le tableau de données ou cliquer dans l'interface graphique sur l'icone tableau à droite:
+
+![](images/env_teo.PNG)
+
+## Contenu d'une table et type des variables
+
+Plusieurs types de variables : "numeric", "integer", "character" ou "factor"
+
+Description de toutes les variables selon leur type
+
+```{r,echo=TRUE}
+summary(FPA)
+```
+
+Description de la variable sexe
+
+```{r,echo=TRUE}
+summary(FPA$SEXEE)
+```
+
+Attention on doit toujours mettre *nom de la table***\$***nom de la variable*, et pas le nom de la variable seule.
+
+## DataExplorer
+
+```{r,echo=TRUE}
+valeurs_manquantes<-is.na(FPA$F_DIP)
+library(DataExplorer)
+plot_intro(FPA)
+```
+
+## Voir les valeurs manquantes
+
+```{r,echo=TRUE}
+plot_missing(FPA)
+```
+
+
+## Tris à plat: distribution des valeurs
+
+```{r,warning=FALSE,echo=TRUE}
+table(FPA$regionnaisp2_11t)
+# Affichage des valeurs manquantes
+table(FPA$regionnaisp2_11t, useNA = "ifany") 
+```
+
+## Tris à plat: distribution des valeurs
+
+```{r,echo=TRUE}
+# avec des pourcentages (package questionr)
+freq(FPA$regionnaisp2_11t)
+
+#Tris à plat avec pondération 
+result<-wtd.table(FPA$regionnaisp2_11t, weights=FPA$POIDSI,normwt=T)
+prop.table(result)*100
+```
+
+## Tris croisés
+
+```{r, warning=FALSE,echo=TRUE}
+table(FPA$D_DISCRI, FPA$SEXEE) 
+
+# avec pondération 
+tw3=wtd.table(FPA$D_DISCRI,FPA$SEXEE,weights=FPA$POIDSI)
+cprop(tw3)
+lprop(tw3)
+```
+
+## Résumer une variable numérique
+
+Pour chaque calcul, ajouter l'option na.rm=TRUE car R ne calcule pas s'il y a des manquants (NA):
+
+```{r,echo=TRUE}
+min(FPA$ap_renc,na.rm = TRUE)
+max(FPA$ap_renc,na.rm = TRUE)
+```
+
+On peut le stocker dans un objet R comme valeur réutilisable
+
+```{r,echo=TRUE}
+anrencmin<-min(FPA$ap_renc,na.rm = TRUE)
+```
+
+## Calcul d'une variable numérique
+
+On va calculer depuis combien d'année les personnes sont ensembles
+
+```{r,echo=TRUE}
+#annee d'enquete (2008) - annee de rencontre
+FPA$durenc=2008-FPA$ap_renc
+# on regarde la moyenne
+mean(FPA$durenc,na.rm = TRUE)
+# ou directement le résumé avec
+summary(FPA$durenc)
+```
+
+## Graphiques
+
+Rappel: on selectionne le type de graphique selon le type des variables.
+
+Plus d'infos sur <https://www.data-to-viz.com/>)
+
+![](images/im_dataviz.png)
+
+## Boite à moustaches
+
+Pour décrire une variable numérique continue:
+
+```{r,echo=TRUE}
+boxplot(FPA$durenc)
+```
+
+Ajout d'option titre, légende et couleur
+
+```{r,echo=TRUE}
+boxplot(FPA$durenc, main = "Distribution de la durée de couple",ylab = "Année",col="blue")
+```
+
+Toutes les couleurs en anglais sont acceptées
+
+## Boite à moustaches
+
+Pour représenter le croisement entre une variable qualitative et une variable quantitative :
+
+```{r,echo=TRUE}
+boxplot(FPA$durenc~FPA$SEXEE,ylab="Année",xlab="Sexe")
+```
+
+Cliquez sur Zoom pour voir tous les labels lorsque vous avez beaucoup de valeurs
+
+## Nuage de point
+
+Pour représenter le croisement entre deux variables quantitatives
+
+```{r,echo=TRUE}
+#exemple avec ce jeu de données du package questionr
+data("hdv2003")
+plot(hdv2003$age,hdv2003$freres.soeurs)
+```
+
+## Nuage de point
+
+Pour voir les points en transparence:
+
+```{r,echo=TRUE}
+plot(hdv2003$age, hdv2003$freres.soeurs, pch = 19, col = rgb(1, 0, 0, 0.1))
+```
+
+## Diagramme en baton
+
+Pour représenter une variable qualitative
+
+En vertical:
+
+```{r,echo=TRUE}
+plot(FPA$D_DISCRI)
+```
+
+En horizontal:
+
+```{r,echo=TRUE}
+barplot(height=table(FPA$D_DISCRI),horiz=TRUE)
+```
+
+## Diagramme de Cleveland
+
+```{r,warning=FALSE,echo=TRUE}
+dotchart(table(FPA$regionnaise2_11t))
+```
+
+## Esquisse: faire des graphiques sans coder
+
+Telecharger une seule fois le package:\
+`install.packages("esquisse")`
+
+Cliquer sur le menu Addins: ggplot2 builder ![](images/esquisse1.png)
+
+Importer des données: soit dejà dans R: donc on selectionne "Environment" et on choisi la table R (ici FPA), Soit par un fichier exterieur ("External file"). On vérifie si les variables sont au bon format (numerique ou factor) dans l'onglet "Update".\
+Si c'est ok on clique sur "Import data".
+
+On arrive dans le menu avec toutes nos variables, selectionner dans X et Fill pour 2 variables qualitatives (en orange), ou X et Y pour 2 variables quantitatives (en bleu).
+
+## Esquisse
+
+![](images/esquisse2.png)
+
+On peut facilement changer les couleurs, le type de graphique et récupérer le code (ggplot2)
+
+## Manipulation des données avec R de base {background-image="images/fond_logo1.png"}
+
+## Selection de variables et d'observation
+
+Entre crochet on a la selection de ligne **,** selection de colonne
+
+```{r,echo=TRUE}
+extrait=FPA[1:100, 1:12] 
+```
+
+Nouvelle base *extrait* qui contient les 100 premières lignes et la 1ère à la 12ème variables (ou colonnes) de la base FPA.
+
+## Selection de variables (ou colonnes)
+
+```{r,echo=TRUE}
+extrait=FPA[, 3:12] 
+#ou on nomme les noms des variables
+extrait2= FPA[, c("GROUP1", "SEXEE", "D_DISCRI")]
+```
+
+ou supprimer des variables:
+
+```{r,echo=TRUE}
+extrait2=FPA[,-c(2:3)] 
+```
+
+## Selection d'observations (ou de lignes)
+
+ex : Selection de tous les hommes
+
+```{r,echo=TRUE}
+dh <- FPA[FPA$SEXEE == "1", ]   
+```
+
+Selection de toutes les lignes sauf les hommes (donc selection des femmes)
+
+```{r,echo=TRUE}
+df <- FPA[FPA$SEXEE != "1", ]  
+```
+
+Nous verrons qu'avec le package dplyr, la selection de variable ou d'observation et tout autre manipulation sur les données sera facilitées.
+
+## Convertir des données
+
+```{r,echo=TRUE}
+#De numérique ou caractère à facteur 
+FPA$ap_rencfac <- factor(FPA$ap_renc)
+
+#De facteur ou numérique en caractère:
+FPA$regionnaisc <- as.character(FPA$regionnaise2_11t)
+
+#Convertir en numérique
+test <- as.numeric(as.character(FPA$T_DIPLOM))
+```
+
+## Recodage et création de variables
+
+La commande levels donne les résultats suivants :
+
+```{r,echo=TRUE}
+levels(FPA$D_DISCRI)
+
+#On recode 
+levels(FPA$D_DISCRI)<-c("Souvent" ,"Parfois" , "Jamais","Refuse de répondre","Ne sait pas")
+levels(FPA$D_DISCRI)
+
+
+```
+
+## Recodage et création de variables
+
+En clic bouton vous pouvez utiliser iorder, icut et irec (du package questionr) et récupérer le code:
+
+-   pour réordonner des valeur: `iorder(FPA$D_DISCRI)`
+
+-   pour classer des variables numériques (ex: classe d'âge): `icut(hdv2003)`
+
+-   pour créer et recoder plus facilement: `irec(FPA$D_DISCRI)`\
+    ![](images/irec1.png) N'oubliez pas de faire executer le code généré.
+
+## Organiser et traiter plus facilement ses données avec le package dplyr {background-image="images/fond_logo1.png"}
+
+## Package dplyr
+
+Package développé par Hadley Wickham,(R Studio) qui a aussi développé ggplot2 et fait partie du **tidyverse** (ensemble de packages qui fonctionne ensemble). Utilisation d'une grammaire {dplyr}, composée essentiellement de 5 verbes qui vont indiquer des opérations courantes sur les lignes et les colonnes d'une structure de données.
+
+Installer et activer le package avant de commencer:
+
+```{r,warning=FALSE,echo=TRUE,results='hide',message=FALSE}
+library(dplyr)
+# ou installer tidyverse qui contient tous les packages utiles par la suite
+library(tidyverse)
+```
+
+## Les 5 verbes (ou fonction) de base de dplyr
+
+Se poser les questions:\
+- Sur quel data frame je travaille ?\
+- Que dois je faire avec ?
+
+-   select(): Sélection de colonnes (variables)
+
+-   filter(): Sélection de lignes (observations)
+
+-   arrange(): Ordonne les lignes du dataframe (ou table)
+
+-   mutate(): Ajout de colonnes (création de variables)
+
+-   summarise(): Production de statistiques résumées
+
+## Select: Sélection de variables
+
+`select()` permet de définir une liste de variables à sélectionner dans le data frame résultant.\
+Syntaxe : select(dataframe,liste_de_variables)\
+Liste de variables séparées par des "," ou :
+
+Facilités d'écriture pour éviter d'écrire de nombreuses variables:\
+`starts_with()`: commence par\
+`ends_with()` : fini par\
+`contains()` : contient\
+`one_of()` : contient un ensemble d'éléments\
+`everything()`: toutes les variables
+
+Exemples :
+
+```{r,echo=TRUE}
+FPA_v2=select(FPA,D_DISCRI,SEXEE,regionnaise2_11t,GROUP1) # ouvrir la table a pour voir le résultat à chaque fois
+FPA_v2=select(FPA,GROUP1:D_DISCRI) # on selectionne les variables GROUP1 à D_DISCRI
+FPA_v2=select(FPA,GROUP1,starts_with("D_")) # on selectionne les variables GROUP1 et toutes celles commençant par "D_" (variables de discrimminations)
+FPA_v2=select(FPA,contains("GROUP")) # on selectionne les variables qui contiennent le mot "GROUP" dans le nom de la variable  
+  
+#Supprimer des variables avec -  
+FPA_v2=select(FPA,-starts_with("C_")) # on supprime les variables qui commencent par "C_"
+FPA_v2=select(FPA,-ends_with("_E")) # on supprime les variables qui finissent par "_E"
+FPA_v2=select(FPA,-contains("_")) # on supprime les variable qui contiennent un _ (trait souligné)
+FPA_v2=select(FPA, -GROUP1CA, -nbunions_t) # on supprime les variables GROUP1CA et nbunions_t
+```
+
+## Filter: Sélection d'observations
+
+`filter()` permet de définir une liste d'observations sélectionnées en regard de conditions
+
+Exemples:
+
+```{r,echo=TRUE}
+FPA_v2= filter(FPA,GROUP1==1)
+FPA_v2= filter(FPA, GROUP1==1 & D_DISCRI %in% c("Souvent","Parfois"))
+FPA_v2= filter(FPA,is.na(F_DIP)) # selection des manquants
+```
+
+On utlise `%in%` lorsqu'on selectionne plusieurs valeurs, si on en selectionne une seule valeur c'est `==`.
+
+**Selection des valeurs qui contiennent tel mot (equivalent `contains`) avec grepl**\
+ex: selection des valeurs qui contiennent le mot Etudiant
+
+`test=filter(FPA, grepl('Couple',TYPM5_MEN))`
+
+## Arrange: Trier les observations
+
+`arrange()` permet de réordonner les observations en fonction de clés de tris. Une option desc permet de trier par valeurs décroissantes. Il est possible d'indiquer plusieurs clés d'ordonnancement.
+
+Exemples:
+
+```{r,echo=TRUE}
+# croissant:
+FPA_v2=arrange(FPA,SEXEE,D_DISCRI)
+# decroissant:
+FPA_v2=arrange(FPA,desc(SEXEE))
+
+```
+
+## Mutate: Création de variables
+
+`mutate()` permet de créer une variable en fonction de variables existantes.
+
+Exemples:
+
+```{r,echo=TRUE}
+#ifelse pour creer une variable avec 2 valeurs (equivalent de =SI() dans Excel)
+FPA_v2=mutate(FPA,discri=ifelse(D_DISCRI %in% c("1","2"),"1","0"))
+
+#case_when() pour des conditions avec plusieurs modalités
+FPA_v2=mutate(FPA_v2,group2=case_when(
+  GROUP1 %in% c("1","2") ~ "Immigrés (ou natif DOM)",
+  GROUP1 == "5" ~ "Groupe majoritaire", 
+  GROUP1 %in% c("3","4") & (regionnaism2_11t =="France métro" | regionnaisp2_11t =="France métro")  ~ "Descendant d'un immigré",
+  GROUP1 %in% c("3","4") & (regionnaism2_11t !="France métro" & regionnaisp2_11t !="France métro")  ~ "Descendant 2 immigrés",
+  GROUP1 %in% c("3","4") & (is.na(regionnaism2_11t) | is.na(regionnaisp2_11t))  ~ "Descendant 2 immigrés"))
+#l'ordre de ces conditions est important : Il faut aller du plus spécifique au plus général. 
+
+#verifier
+table(FPA_v2$discri,FPA_v2$D_DISCRI)
+table(FPA_v2$group2,FPA_v2$GROUP1)
+
+```
+
+## Chainage des opérations avec le "pipe" %\>%
+
+Une fois qu'on connait ces premiers élements l'interêt est de pouvoir les combiner.
+
+Par exemple :
+
+```{r,echo=TRUE}
+#peu lisible
+FPA_v2<-arrange(select(filter(FPA, SEXEE == "2"),SEXEE, starts_with("D_")))
+#ou remettre à chaque fois le nom de la table
+tmp <- filter(FPA,  SEXEE == "2")
+tmp <- select(tmp,SEXEE, D_DISCRI, D_PQDISC_A, D_PQDISC_B)
+arrange(tmp, D_DISCRI)
+
+#Avec dplyr et le %\>% on obtient:
+hdvf<- FPA %>% 
+  filter(SEXEE == "2") %>% 
+  select(SEXEE, starts_with("D_")) %>% 
+  arrange(D_DISCRI)  
+
+# Autre exemple:
+FPA_v2 <- FPA %>%
+  filter(GROUP1 %in% c("1","2")) %>%
+  mutate(discri=ifelse(D_DISCRI %in% c("1","2"),"1","0"))
+```
+
+## La fonction group_by
+
+La fonction group_by s'utilise avec les %\>% et permet de définir des groupes de lignes à partir des valeurs d'une ou plusieurs colonnes
+
+Exemples :
+
+```{r,echo=TRUE}
+# creation de variable avec group by:
+FPA_v3 <- FPA %>% 
+  group_by(SEXEE) %>% 
+  mutate(moyrenc = mean(durenc, na.rm = TRUE)) %>%
+  select(SEXEE,GROUP1,durenc,moyrenc)
+
+# group_by peut aussi être utile avec filter :
+FPA_v3 <- FPA %>% 
+  group_by(SEXEE) %>% 
+  filter(durenc == max(durenc, na.rm = TRUE))
+```
+
+## La fonction summarise
+
+`summarise()` permet de produire des statistiques à un niveau agrégé. Il faut indiquer le(s) critère(s) d'agrégation et la (les) statistique(s) à calculer.
+
+-   Une instruction group_by est indispensable pour specifier en amont les critères d'agregation
+
+-   Quelques exemples de fonctions : count, mean, sum, max
+
+-   Il est possible de préciser des conditions dans les calculs (exemple sum(x\>10))
+
+## La fonction summarise
+
+Le résultat peut être stocké au niveau individuel (mutate) ou agrégé (summarise)
+
+Une option na.rm=T permet d'éliminer les observations pour lesquelles figure une valeur manquante.
+
+Une instruction ungroup() peut être necessaire pour réinitaliser le calcul de variables individuelles.\
+Exemple:
+
+```{r,echo=TRUE}
+FPA %>% 
+  summarise(minanneer = min(ap_renc, na.rm=TRUE),
+            maxanneer = max(ap_renc, na.rm=TRUE))
+
+# avec group by
+FPA %>%
+  group_by(SEXEE) %>%
+  summarise(minanneer = min(ap_renc, na.rm=TRUE),
+            maxanneer = max(ap_renc, na.rm=TRUE),
+            Nbpers = n())
+
+# Le resultat peut aussi etre stocké à un niveau individuel 
+result=FPA %>%
+  group_by(SEXEE) %>%
+  summarise(minanneer = min(ap_renc, na.rm=TRUE),
+            maxanneer = max(ap_renc, na.rm=TRUE),
+            Nbpers = n())
+```
+
+## Calculer un rang
+
+```{r,echo=TRUE}
+FPA = FPA %>%
+#  group_by(SEXEE) %>%
+  mutate(rang=row_number())
+```
+
+## Reproduire les résultats du Pop&soc
+
+![](images/graph1teo.PNG)
+
+## Reproduire les résultats du Pop&soc
+
+![](images/graph2teo.PNG)
+
+## Les jointures et empilements
+
+Syntaxe générale:\
+`Type_de_jointure(dataframes, by="cle")`\
+Les clés de jointure peuvent être de noms différents.
+
+Plusieurs types de jointure dans dplyr (équivalent du code sql):\
+**Inner join**: Selection des observations communes entre les 2 tables. ![](images/innerjoin.png)
+
+Exemple: `teo3 = inner_join(teo1,teo2,by="id")`
+
+## Les jointures
+
+-   **Full join**: Selection de toutes les observations ![](images/fulljoin.png) Exemple si l'identifiant n'a pas le même nom: `teo3=full_join(teo1,teo2, by = c("id" = "id2"))`
+
+-   **Left join**: Selection des observations présentes dans la première table ![](images/leftjoin.png)
+
+-   **Right join**: Selection des observations présentes dans la deuxième table ![](images/rightjoin.png)
+
+Une "cheat sheet" de R Studio sur les jointures résume bien ce que ça fait: ![](images/jointure.png)
+
+## Les jointures
+
+-   **Semi join**: garde que les lignes et colonnes de table1 presente aussi dans table2
+-   **Anti join**: garde que les lignes et colonnes dans table1 et pas dans table2
+
+## Les jointures
+
+Il faut que les variables soient communes entre les 2 tables jointes pour utiliser les fonctions ci-dessous (pas besoin de clé de jointure): ![](images/jointure2.png)
+
+## Les empilements
+
+Lorsque les variables sont les memes entre 2 tables et que les individus sont différents :
+
+**bind_rows()**
+
+Exemple:
+
+```{r,eval=FALSE,echo=TRUE}
+teo_fin = bind_rows(teo1,teo2)
+
+# pour voir de quel table viennent les lignes: .id
+teo_fin=bind_rows(teo1,teo2, .id = "source")
+```
+
+## Limites des jointures
+
+-   Variables de même nom conservées dans le dataframe de sortie (avec suffixe .x et .y par défaut)
+
+-   Pas de possibilité de lier directement 3 dataframes via dplyr
+
+## Transformation des données
+
+Tidy datas : Par définition, une donnée est représentée par une valeur sur une ligne (observation) pour une mesure (variable). Sinon, il faut transformer les données.
+
+```{r,echo=FALSE,warning=FALSE,echo=TRUE}
+library(tidyr)
+```
+
+![](images/widetolong.png)
+
+C'est notamment très utilisé si on souhaite passer d'une base individus à une base ménage ou inversement.
+
+## Pivot_wider : de long en large
+
+Permet de restructurer un dataframe par information (1 ligne = 1 information, et non un individu)
+
+Ici nous allons voir comment passer d'une observation niveau logement à une observation niveau individu ?
+
+Avec le code de base puis en améliorant le code au fur et à mesure
+
+```{r,echo=TRUE}
+# Fichier en entree 
+LOG=read.csv2("./materiel/LOG.csv")
+
+# code de base: pivot_wider
+IND= LOG %>% pivot_wider(names_from = Age, values_from = SO_LOG)
+
+# on retire la variable dep_log pour obtenir un seul individu par ligne
+IND = LOG %>% 
+  select(-DEPT_LOG) %>% 
+  pivot_wider(names_from = Age, values_from = SO_LOG)
+
+# on ajoute le suffixe age comme nom de variable
+IND = LOG %>% 
+  select(-DEPT_LOG) %>%
+  mutate(Age=paste0("Age",Age)) %>%
+  pivot_wider(names_from = Age, values_from = SO_LOG)
+
+# On garde uniquement les changements de STATUT 
+IND2 = LOG %>% 
+  arrange(IDENT,Age) %>%
+  group_by(IDENT) %>%
+  filter(SO_LOG!=lag(SO_LOG) | row_number()==1) %>%
+  mutate(Rang=paste0("STA_",row_number())) %>%
+  select(-DEPT_LOG,-Age) %>%
+  pivot_wider(names_from = Rang, values_from = SO_LOG)
+
+# resultat
+head(IND2)
+```
+
+## Pivot_longer : de large en long
+
+Exemple : Comment passer d'une observation niveau individu (vecteur de positions résidentielles) à une observation niveau logement ?
+
+```{r,echo=TRUE}
+LOG2 = IND %>% 
+  pivot_longer(starts_with("Age"), names_to = "Age", values_to = "SO_LOG") %>% 
+  filter (SO_LOG != is.na(SO_LOG)) %>% # on retire si c'est manquant
+  arrange(IDENT)
+
+#On revient au fichier d'origine
+```
+
+Autre exemple:
+
+```{r,echo=TRUE}
+Pop = data.frame( Pays=c("Danemark","Finlande","Norvege","Suede"),
+                  Pop1980=c(5120,4771,4079,8303),
+                  Pop1990=c(5135,4974,4233,8527),
+                  Pop2000=c(5330,5171,4478,8861),
+                  Pop2010=c(5535,5351,4855,9341))
+View(Pop)
+
+PopLong=Pop  %>%
+  pivot_longer(c(Pop1980, Pop1990, Pop2000,Pop2010), names_to = "Var", values_to = "Valeur")
+# même chose avec stats_with pour ne pas écrire toutes les variables
+PopLong=Pop  %>%
+  pivot_longer(starts_with("Pop"), names_to = "Var", values_to = "Valeur")
+
+
+# La transformation de cette table nous permet maintenant de réaliser le graphique suivant:
+PopLong %>%
+  mutate(annee=as.numeric(substr(Var,4,7))) %>%
+  ggplot(aes(x = annee, y = Valeur, color = Pays)) +
+  geom_line()
+```
+
+## Traitements massifs et opérations sur les métadonnées
+
+L'objectif est de pouvoir appliquer plusieurs fonctions à plusieurs variables.
+
+A partir d'un fichier contenant des caractéristiques démographiques de communes d'Ile de France de 1954 à 1990, on cherche à déterminer quelles sont les populations minimales, moyennes et maximales des populations 1968 à 1990, par département ?\
+
+```{r,echo=TRUE,warning=FALSE,eval=FALSE,message=FALSE}
+
+# Intégration des données
+load("./materiel/idf1.RData")
+
+# summarise_all  
+X = idf1 %>%   
+ select(dep,starts_with("pt"),starts_with("na")) %>%  
+  group_by(dep) %>%  
+  summarise_all(funs(min,max,mean))  
+
+# summarise_at  
+X2 = idf1 %>%  
+  group_by(dep) %>%  
+  summarise_at(vars(starts_with("pt")),funs(min,max,mean)) 
+```
+
+## Traitements massifs et opérations sur les métadonnées
+
+Transformer toutes les variables de type facteur en variable de type caractère `h2 = FPA %>% mutate_if(is.factor,as.character)`
+
+Renommer une série de variables:\
+`rename_at`
+
+Recodification automatique:\
+`mutate_at`
+
+Changement de type:\
+`mutate_if`
+
+## Sauvegarder son travail et recharger ses données
+
+Les programmes R sont enregistrés avec l'extension .R, on peut l'ouvrir avec bloc note ou word.
+
+-   Sauvegarder son dataframe:\
+    `save(FPA_v2, file = "teo_fin.RData")`
+
+-   Sauvegarder son projet ou son environnement R Studio:\
+    `save.image("travail_teo.RData")`
+
+-   Recharger ses données R:\
+    `load("teo_fin.RData")`
+
+## Exporter dans un fichier excel
+
+```{r,echo=TRUE}
+library("writexl")
+write_xlsx(FPA,"./materiel/teo.xlsx") 
+
+```
+
+## Références
+
+-   Rzine, pour la diffusion et le partage de ressources sur la pratique de R en Sciences Humaines et Sociales:\
+    <https://rzine.fr/>
+
+-   Tidyverse :\
+    <https://www.tidyverse.org/>
+
+-   Documentation de Julien Barnier :\
+    <https://juba.github.io/tidyverse/02-prise_en_main.html>
+
+-   Documentation de Joseph Larmarange :\
+    <http://larmarange.github.io/analyse-R/presentation-et-philosophie.html>
+
+## Références
+
+-   Wickham, Hadley. «Tidy Data». Journal of Statistical Software; Vol 1, Issue 10 (2014) :\
+    <https://www.jstatsoft.org/v059/i10>
+
+-   Cheat sheets :\
+    <https://www.rstudio.com/resources/cheatsheets/>
+
+-   Séminaire RUSS :\
+    <https://russ.site.ined.fr/>

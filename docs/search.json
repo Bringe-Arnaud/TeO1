@@ -1,0 +1,783 @@
+[
+  {
+    "objectID": "support-061124.html",
+    "href": "support-061124.html",
+    "title": "Débuter avec R",
+    "section": "",
+    "text": "Logiciel R créé dans les années 1990 par Robert Gentleman & Ross Ihaka. Développé depuis 1997 par la “R-core team”\n\nDernière Version 4\nLogiciel libre et gratuit permettant de faire des traitements de données statistiques\nOuvert : tout utilisateur peut ajouter ses fonctions personnelles\nTransparent : l’utilisateur a accès au code source des fonctions\nMultiplateforme : Windows, Linux, Mac\nEn constante évolution",
+    "crumbs": [
+      "{{<fa solid  person-chalkboard>}} Support de formation",
+      "Débuter avec R"
+    ]
+  },
+  {
+    "objectID": "support-061124.html#présentation-de-r-et-rstudio",
+    "href": "support-061124.html#présentation-de-r-et-rstudio",
+    "title": "Débuter avec R",
+    "section": "",
+    "text": "Logiciel R créé dans les années 1990 par Robert Gentleman & Ross Ihaka. Développé depuis 1997 par la “R-core team”\n\nDernière Version 4\nLogiciel libre et gratuit permettant de faire des traitements de données statistiques\nOuvert : tout utilisateur peut ajouter ses fonctions personnelles\nTransparent : l’utilisateur a accès au code source des fonctions\nMultiplateforme : Windows, Linux, Mac\nEn constante évolution",
+    "crumbs": [
+      "{{<fa solid  person-chalkboard>}} Support de formation",
+      "Débuter avec R"
+    ]
+  },
+  {
+    "objectID": "support-061124.html#interface-de-base-r",
+    "href": "support-061124.html#interface-de-base-r",
+    "title": "Débuter avec R",
+    "section": "Interface de base R",
+    "text": "Interface de base R\n\nInterface R de base pour coder. On peut l’utiliser comme calculatrice.\nInstallation obligatoire (https://cran.r-project.org/bin/windows/base/) avant de pouvoir installer l’interface Rstudio (https://rstudio.com/products/rstudio/download/), plus conviviale que nous allons utiliser.",
+    "crumbs": [
+      "{{<fa solid  person-chalkboard>}} Support de formation",
+      "Débuter avec R"
+    ]
+  },
+  {
+    "objectID": "support-061124.html#interface-r-studio",
+    "href": "support-061124.html#interface-r-studio",
+    "title": "Débuter avec R",
+    "section": "Interface R Studio",
+    "text": "Interface R Studio",
+    "crumbs": [
+      "{{<fa solid  person-chalkboard>}} Support de formation",
+      "Débuter avec R"
+    ]
+  },
+  {
+    "objectID": "support-061124.html#syntaxe-r",
+    "href": "support-061124.html#syntaxe-r",
+    "title": "Débuter avec R",
+    "section": "Syntaxe R",
+    "text": "Syntaxe R\n\nR est sensible à la casse\n\nCtrl entrée (Windows) ou Cmd entrée (Mac) pour soumettre le code ou bouton Run\n\nCommentaire: #commentaires\n\nPour les chemins il faut inverser les antislash par des slash: “D:/R/Formation_R”\n\nLes valeurs manquantes: NA, is.na\n\nOpérateurs permis : ==, &lt;, &gt;, !=, %in%\n\nOpérateurs logiques : &, |, !",
+    "crumbs": [
+      "{{<fa solid  person-chalkboard>}} Support de formation",
+      "Débuter avec R"
+    ]
+  },
+  {
+    "objectID": "support-061124.html#syntaxe-r-1",
+    "href": "support-061124.html#syntaxe-r-1",
+    "title": "Débuter avec R",
+    "section": "Syntaxe R",
+    "text": "Syntaxe R\n\nF1 sur une fonction R afin d’être dirigé directement vers l’aide ou soumettre ?nomdelafonction\nscript R : où vous écrivez votre code, enregistré sous .R (s’ouvre avec n’importe quel éditeur de texte)\nRmarkdown ou Quarto: pour mettre en forme des documents contenant à la fois du texte, des instructions R et le résultat fourni par R.",
+    "crumbs": [
+      "{{<fa solid  person-chalkboard>}} Support de formation",
+      "Débuter avec R"
+    ]
+  },
+  {
+    "objectID": "support-061124.html#créer-son-répertoire-de-travail",
+    "href": "support-061124.html#créer-son-répertoire-de-travail",
+    "title": "Débuter avec R",
+    "section": "Créer son répertoire de travail",
+    "text": "Créer son répertoire de travail\n\nOn peut dire au logiciel où se trouve nos fichiers\nsetwd(\"D:/formation/R\")\nIl est conseillé de créer un nouveau projet (File: New project) lorsque vous commencez un nouveau traitement, tous vos objets R seront sauvegardés (programmes, images, sorties) au même endroit.\nLa commande getwd indique le répertoire sur lequel vous travaillez: getwd()\nInformer en début ou fin de programme quelles versions de R et de packages on utilise: sessionInfo()",
+    "crumbs": [
+      "{{<fa solid  person-chalkboard>}} Support de formation",
+      "Débuter avec R"
+    ]
+  },
+  {
+    "objectID": "support-061124.html#installer-et-activer-des-packages",
+    "href": "support-061124.html#installer-et-activer-des-packages",
+    "title": "Débuter avec R",
+    "section": "Installer et activer des packages",
+    "text": "Installer et activer des packages\nEn clic bouton: cliquer dans la fenêtre en bas à droite de R Studio sur l’onglet Packages, cliquer sur Install et écrire le nom du package\nEn code :\ninstall.packages(\"questionr\")\nNe pas oublier les guillemets entre le nom du package.\nAttention ne pas oublier qu’à chaque fois que vous ouvrez R, et après avoir installer les packages, il faut les charger avec la commande library\n\n\nlibrary(questionr)\n\nOu cocher les packages en bas à droite de votre Rstudio dans l’onglet “Packages”",
+    "crumbs": [
+      "{{<fa solid  person-chalkboard>}} Support de formation",
+      "Débuter avec R"
+    ]
+  },
+  {
+    "objectID": "support-061124.html#importer-des-données",
+    "href": "support-061124.html#importer-des-données",
+    "title": "Débuter avec R",
+    "section": "Importer des données",
+    "text": "Importer des données\nVous pouvez importer en clic bouton un fichier texte, excel, SPSS, SAS ou Stata (menu File: Import Dataset).\nImporter un fichier Excel: cliquer sur le bouton browse et selectionner son fichier:",
+    "crumbs": [
+      "{{<fa solid  person-chalkboard>}} Support de formation",
+      "Débuter avec R"
+    ]
+  },
+  {
+    "objectID": "support-061124.html#importer-des-données-1",
+    "href": "support-061124.html#importer-des-données-1",
+    "title": "Débuter avec R",
+    "section": "Importer des données",
+    "text": "Importer des données\nRecupérer le code avec un copier-coller:\nlibrary(readxl)\nidf &lt;- read_excel(\"idf.xlsx\")\nImporter un fichier texte: En clic bouton: File : Import Dataset : From Text(base)\nEn code: temperature &lt;-read.table(\"temperature.txt\",header=TRUE, sep=\"\\t\", na.strings=\"NA\", dec=\",\") header : intitules des variables sep : séparateur de colonnes dec : séparateur de décimal\nOu un fichier CSV:\nsmp&lt;- read.csv2(\"smp1.csv\")",
+    "crumbs": [
+      "{{<fa solid  person-chalkboard>}} Support de formation",
+      "Débuter avec R"
+    ]
+  },
+  {
+    "objectID": "support-061124.html#décrire-ses-données",
+    "href": "support-061124.html#décrire-ses-données",
+    "title": "Débuter avec R",
+    "section": "Décrire ses données",
+    "text": "Décrire ses données\nNous allons utiliser le fichier d’exemple TEO\n\nload(\"./materiel/TEO1_v4.RData\")\n\nPour copier la table sous un autre nom par exemple\n\nFPA &lt;- teo\n\nLe tableau individus x variables sont des data.frame dans R\nTapez le nom du tableau de données puis entrée : affiche le tableau de données ou cliquer dans l’interface graphique sur l’icone tableau à droite:",
+    "crumbs": [
+      "{{<fa solid  person-chalkboard>}} Support de formation",
+      "Débuter avec R"
+    ]
+  },
+  {
+    "objectID": "support-061124.html#contenu-dune-table-et-type-des-variables",
+    "href": "support-061124.html#contenu-dune-table-et-type-des-variables",
+    "title": "Débuter avec R",
+    "section": "Contenu d’une table et type des variables",
+    "text": "Contenu d’une table et type des variables\nPlusieurs types de variables : “numeric”, “integer”, “character” ou “factor”\nDescription de toutes les variables selon leur type\n\nsummary(FPA)\n\n       ID            POIDSI         SEXEE       SEXEE_clair   \n Min.   : 1000   Min.   :   13.19   1:10281   Masculin:10281  \n 1st Qu.:10973   1st Qu.:  255.86   2:11480   Féminin :11480  \n Median :20723   Median :  394.96                             \n Mean   :20630   Mean   : 1594.55                             \n 3rd Qu.:30390   3rd Qu.:  674.58                             \n Max.   :40000   Max.   :59700.82                             \n                                                              \n age_tranches           taille          poids          poids_rec     S_ETAT  \n Length:21761       Min.   :145.3   Min.   : 47.81   Min.   :47.81   1:8656  \n Class :character   1st Qu.:161.7   1st Qu.: 62.01   1st Qu.:62.01   2:9453  \n Mode  :character   Median :167.6   Median : 67.59   Median :67.59   3:2995  \n                    Mean   :168.1   Mean   : 69.96   Mean   :68.90   4: 523  \n                    3rd Qu.:174.7   3rd Qu.: 75.90   3rd Qu.:75.90   5: 113  \n                    Max.   :189.7   Max.   :999.00   Max.   :93.47   9:  21  \n                                                                             \n       S_ETAT_clair      F_DIP           F_DIP_clair   SITUAE   \n Très Bon    :8656   4      :4369   CAP_BEP    :4369   1:14387  \n Bon         :9453   8      :3846   Sup_Bac+2  :3846   2:  197  \n Moyen       :2995   1      :3559   Aucun      :3559   3: 2335  \n Mauvais     : 523   7      :2335   Bac+2      :2335   4: 2284  \n Très Mauvais: 113   6      :2273   Bac_général:2273   5:  319  \n NSP         :  21   (Other):4998   (Other)    :4998   6: 1709  \n                     NA's   : 381   NA's       : 381   7:  530  \n        SITUAE_clair   P_NSTPTC     P_SATPTC       cs_act_6T   \n Emploi       :14387   1   : 1159   1   :11073   5      :4842  \n Apprentissage:  197   2   :  119   2   : 2202   6      :3707  \n Etudes       : 2335   NA's:20483   NA's: 8486   4      :3332  \n Chômage      : 2284                             3      :2130  \n Retraite     :  319                             2      : 874  \n AuFoyer      : 1709                             (Other):  95  \n Autre        :  530                             NA's   :6781  \n       cs_act_6T_clair GROUP1                 GROUP1_clair  INATUE   \n Employés      :4842   1:8456   Immigré             :8456   1:16852  \n Ouvriers      :3707   2: 712   Natif DOM           : 712   2: 1542  \n ProfInter     :3332   3:8161   Descendant Immigré-s:8161   3: 3367  \n Cadres        :2130   4: 651   Descendant DOM      : 651            \n Arti_Comm_Chef: 874   5:3781   Autres résid. Fr.   :3781            \n (Other)       :  95                                                 \n NA's          :6781                                                 \n              INATUE_clair   regionnaise2_11t    L_AUJC     \n Française          :16852   Length:21761       1   : 3124  \n UE                 : 1542   Class :character   2   : 1872  \n Etrangère (hors UE): 3367   Mode  :character   3   :  742  \n                                                4   :   37  \n                                                9   :    1  \n                                                NA's:15985  \n                                                            \n      L_AUJC_clair    L_AUJE           L_AUJE_clair    L_AUJL     \n Très Bien  : 3124   1   : 2043   Très Bien  : 2043   1   : 2674  \n Bien       : 1872   2   : 1367   Bien       : 1367   2   : 1577  \n Un peu     :  742   3   : 1609   Un peu     : 1609   3   : 1099  \n Pas du tout:   37   4   :  757   Pas du tout:  757   4   :  426  \n NSP        :    1   NA's:15985   NA's       :15985   NA's:15985  \n NA's       :15985                                                \n                                                                  \n      L_AUJL_clair    L_AUJP           L_AUJP_clair    FRAUJ      \n Très Bien  : 2674   1   : 2908   Très Bien  : 2908   0   :   28  \n Bien       : 1577   2   : 1963   Bien       : 1963   1   : 2992  \n Un peu     : 1099   3   :  851   Un peu     :  851   2   :  801  \n Pas du tout:  426   4   :   54   Pas du tout:   54   3   : 1955  \n NA's       :15985   NA's:15985   NA's       :15985   NA's:15985  \n                                                                  \n                                                                  \n                     FRAUJ_clair    A_PERMIS  D_DISCRI  D_DISCRI_clair \n Pas du tout               :   28   1:16086   1: 1028   Souvent: 1028  \n Autres cas                : 2992   2: 5675   2: 3849   Parfois: 3849  \n Très bien parlé et compris:  801             3:16784   Jamais :16784  \n Que des très bien         : 1955             8:    7   Refus  :    7  \n NA's                      :15985             9:   93   NSP    :   93  \n                                                                       \n                                                                       \n D_PQDISC_A D_PQDISC_B D_PQDISC_C D_PQDISC_D D_PQDISC_E D_PQDISC_F D_PQDISC_G\n 0:21323    0:21339    0:21608    0:19859    0:18969    0:21334    0:21342   \n 1:  438    1:  422    1:  153    1: 1902    1: 2792    1:  427    1:  419   \n                                                                             \n                                                                             \n                                                                             \n                                                                             \n                                                                             \n D_PQDISC_H D_PQDISC_I D_PQDISC_J D_PQDISC_K D_PQDISC_L D_PQDISC_FLAG P_DRECH  \n 0:21600    0:21725    0:21372    0:21450    0:21277    -1:   67      1: 2307  \n 1:  161    1:   36    1:  389    1:  311    1:  484    -2:    1      2:19235  \n                                                         0:16884      9:  219  \n                                                         1: 4809               \n                                                                               \n                                                                               \n                                                                               \n P_DISPQ_A P_DISPQ_B P_DISPQ_C P_DISPQ_D P_DISPQ_E P_DISPQ_F P_DISPQ_G\n 0:21502   0:21586   0:21203   0:20587   0:21646   0:21363   0:20178  \n 1:  259   1:  175   1:  558   1: 1174   1:  115   1:  398   1: 1583  \n                                                                      \n                                                                      \n                                                                      \n                                                                      \n                                                                      \n P_DISPQ_FLAG T_VIOLEN  demarches       T_DIPLOM     T_DIPLOM_clair \n -1:  259     1:  784   1   :  401   1      :10784   Aucun  :10784  \n -2:    4     2:20930   2   : 4476   2      : 2640   CEP    : 2640  \n  0:17998     9:   47   NA's:16884   4      : 1836   CAP_BEP: 1836  \n  1: 3500                            99     : 1507   NSP    : 1507  \n                                     3      : 1324   Brevet : 1324  \n                                     (Other): 3661   (Other): 3661  \n                                     NA's   :    9   NA's   :    9  \n    T_DIPLOP      T_DIPLOP_clair   cs_mere_6T         cs_mere_6T_clair\n 1      :9172   Aucun    :9172   5      :6388   Employés      :6388   \n 4      :2604   CAP_BEP  :2604   6      :2583   Ouvriers      :2583   \n 99     :2416   NSP      :2416   4      :1969   ProfInter     :1969   \n 2      :2372   CEP      :2372   2      :1251   Arti_Comm_Chef:1251   \n 8      :2195   Sup_Bac+2:2195   1      : 729   Agriculteurs  : 729   \n (Other):2905   (Other)  :2905   (Other): 909   (Other)       : 909   \n NA's   :  97   NA's     :  97   NA's   :7932   NA's          :7932   \n   cs_pere_6T          cs_pere_6T_clair regionnaism2_11t   regionnaisp2_11t  \n 6      :10155   Ouvriers      :10155   Length:21761       Length:21761      \n 2      : 2873   Arti_Comm_Chef: 2873   Class :character   Class :character  \n 4      : 2376   ProfInter     : 2376   Mode  :character   Mode  :character  \n 5      : 2188   Employés      : 2188                                        \n 3      : 2029   Cadres        : 2029                                        \n (Other): 1928   (Other)       : 1928                                        \n NA's   :  212   NA's          :  212                                        \n TYPM5_MEN           TYPM5_MEN_clair  MATRIE         MATRIE_clair   GROUP1CA   \n 1: 2857   Personne seule    : 2857   1: 9757   Celibataire: 9757   1   :5305  \n 2: 2310   Fam.Monoparentale : 2310   2:10471   Marié.e    :10471   2   : 335  \n 3: 2997   Couple sans enfant: 2997   3:  249   Veuf.ve    :  249   3   :1822  \n 4:12348   Couple avec enfant:12348   4: 1284   Divorcé.e  : 1284   4   : 131  \n 5: 1249   Autre type        : 1249                                 5   :8179  \n                                                                    9   :   3  \n                                                                    NA's:5986  \n              GROUP1CA_clair    ap_renc         ap_m_civ       ap_m_relig   \n Immigré             :5305   Min.   :1955    Min.   :1960    Min.   :1962   \n Natif DOM           : 335   1st Qu.:1981    1st Qu.:1984    1st Qu.:1989   \n Descendant Immigré-s:1822   Median :1990    Median :1994    Median :1998   \n Descendant DOM      : 131   Mean   :1989    Mean   :1992    Mean   :1995   \n Autres résid. Fr.   :8179   3rd Qu.:1998    3rd Qu.:2001    3rd Qu.:2003   \n NSP                 :   3   Max.   :2010    Max.   :2010    Max.   :2010   \n NA's                :5986   NA's   :10644   NA's   :10893   NA's   :20024  \n C_RCTLIC_A C_RCTLIC_B C_RCTLIC_C C_RCTLIC_D C_RCTLIC_E C_RCTLIC_F C_RCTLIC_G\n 0:19215    0:19128    0:19288    0:20319    0:21123    0:20619    0:20716   \n 1: 2546    1: 2633    1: 2473    1: 1442    1:  638    1: 1142    1: 1045   \n                                                                             \n                                                                             \n                                                                             \n                                                                             \n                                                                             \n C_RCTLIC_H C_RCTLIC_I C_RCTLIC_J C_RCTLIC_K C_RCTLIC_L C_RCTLIC_M C_RCTLIC_N\n 0:21337    0:21409    0:21565    0:21592    0:21530    0:21584    0:21736   \n 1:  424    1:  352    1:  196    1:  169    1:  231    1:  177    1:   25   \n                                                                             \n                                                                             \n                                                                             \n                                                                             \n                                                                             \n C_RCTLIC_O C_RCTLIC_FLAG     nbunions_t    ma_force    \n 0:21378    -1:   68      0        : 5451   1   : 1234  \n 1:  383     0: 8088      plus de 1:16310   2   :  518  \n             1:13605                        3   :  325  \n                                            8   :    1  \n                                            9   :   40  \n                                            NA's:19643  \n                                                        \n              ma_force_clair     ma_init                    ma_init_clair  \n Oui à ce moment     : 1234   3      : 8259   Ensemble             : 8259  \n Oui mais plus tard  :  518   2      : 1160   Votre conjoint.e     : 1160  \n Non pression famille:  325   1      :  897   Vous-même            :  897  \n Refus               :    1   4      :  875   Parents/Beaux-parents:  875  \n NSP                 :   40   5      :   51   Autre pers. famille  :   51  \n NA's                :19643   (Other):   56   (Other)              :   56  \n                              NA's   :10463   NA's                 :10463  \n\n\nDescription de la variable sexe\n\nsummary(FPA$SEXEE)\n\n    1     2 \n10281 11480 \n\n\nAttention on doit toujours mettre nom de la table$nom de la variable, et pas le nom de la variable seule.",
+    "crumbs": [
+      "{{<fa solid  person-chalkboard>}} Support de formation",
+      "Débuter avec R"
+    ]
+  },
+  {
+    "objectID": "support-061124.html#dataexplorer",
+    "href": "support-061124.html#dataexplorer",
+    "title": "Débuter avec R",
+    "section": "DataExplorer",
+    "text": "DataExplorer\n\nvaleurs_manquantes&lt;-is.na(FPA$F_DIP)\nlibrary(DataExplorer)\nplot_intro(FPA)",
+    "crumbs": [
+      "{{<fa solid  person-chalkboard>}} Support de formation",
+      "Débuter avec R"
+    ]
+  },
+  {
+    "objectID": "support-061124.html#voir-les-valeurs-manquantes",
+    "href": "support-061124.html#voir-les-valeurs-manquantes",
+    "title": "Débuter avec R",
+    "section": "Voir les valeurs manquantes",
+    "text": "Voir les valeurs manquantes\n\nplot_missing(FPA)",
+    "crumbs": [
+      "{{<fa solid  person-chalkboard>}} Support de formation",
+      "Débuter avec R"
+    ]
+  },
+  {
+    "objectID": "support-061124.html#tris-à-plat-distribution-des-valeurs",
+    "href": "support-061124.html#tris-à-plat-distribution-des-valeurs",
+    "title": "Débuter avec R",
+    "section": "Tris à plat: distribution des valeurs",
+    "text": "Tris à plat: distribution des valeurs\n\ntable(FPA$regionnaisp2_11t)\n\n\n                 9999 Afrique subsaharienne               Algérie \n                   53                  2188                  2343 \n                 Asie           Autres pays                   DOM \n                 1246                  1780                  1180 \n       Espagne/Italie          France métro         Maroc/Tunisie \n                 1783                  4665                  2376 \n             Portugal               Turquie                  UE27 \n                 1688                  1283                  1079 \n\n# Affichage des valeurs manquantes\ntable(FPA$regionnaisp2_11t, useNA = \"ifany\") \n\n\n                 9999 Afrique subsaharienne               Algérie \n                   53                  2188                  2343 \n                 Asie           Autres pays                   DOM \n                 1246                  1780                  1180 \n       Espagne/Italie          France métro         Maroc/Tunisie \n                 1783                  4665                  2376 \n             Portugal               Turquie                  UE27 \n                 1688                  1283                  1079 \n                 &lt;NA&gt; \n                   97",
+    "crumbs": [
+      "{{<fa solid  person-chalkboard>}} Support de formation",
+      "Débuter avec R"
+    ]
+  },
+  {
+    "objectID": "support-061124.html#tris-à-plat-distribution-des-valeurs-1",
+    "href": "support-061124.html#tris-à-plat-distribution-des-valeurs-1",
+    "title": "Débuter avec R",
+    "section": "Tris à plat: distribution des valeurs",
+    "text": "Tris à plat: distribution des valeurs\n\n# avec des pourcentages (package questionr)\nfreq(FPA$regionnaisp2_11t)\n\n                         n    % val%\n9999                    53  0.2  0.2\nAfrique subsaharienne 2188 10.1 10.1\nAlgérie               2343 10.8 10.8\nAsie                  1246  5.7  5.8\nAutres pays           1780  8.2  8.2\nDOM                   1180  5.4  5.4\nEspagne/Italie        1783  8.2  8.2\nFrance métro          4665 21.4 21.5\nMaroc/Tunisie         2376 10.9 11.0\nPortugal              1688  7.8  7.8\nTurquie               1283  5.9  5.9\nUE27                  1079  5.0  5.0\nNA                      97  0.4   NA\n\n#Tris à plat avec pondération \nresult&lt;-wtd.table(FPA$regionnaisp2_11t, weights=FPA$POIDSI,normwt=T)\nprop.table(result)*100\n\n                 9999 Afrique subsaharienne               Algérie \n            0.2563999             1.5133015             5.2188465 \n                 Asie           Autres pays                   DOM \n            0.5587221             3.0115168             1.2953399 \n       Espagne/Italie          France métro         Maroc/Tunisie \n            2.9744202            75.6531928             4.2796721 \n             Portugal               Turquie                  UE27 \n            2.3169533             0.8576965             2.0639385",
+    "crumbs": [
+      "{{<fa solid  person-chalkboard>}} Support de formation",
+      "Débuter avec R"
+    ]
+  },
+  {
+    "objectID": "support-061124.html#tris-croisés",
+    "href": "support-061124.html#tris-croisés",
+    "title": "Débuter avec R",
+    "section": "Tris croisés",
+    "text": "Tris croisés\n\ntable(FPA$D_DISCRI, FPA$SEXEE) \n\n   \n       1    2\n  1  557  471\n  2 1931 1918\n  3 7740 9044\n  8    5    2\n  9   48   45\n\n# avec pondération \ntw3=wtd.table(FPA$D_DISCRI,FPA$SEXEE,weights=FPA$POIDSI)\ncprop(tw3)\n\n      1     2     Ensemble\n1       2.4   2.1   2.2   \n2       9.2  10.8  10.0   \n3      88.3  86.8  87.6   \n8       0.0   0.0   0.0   \n9       0.1   0.3   0.2   \nTotal 100.0 100.0 100.0   \n\nlprop(tw3)\n\n         1     2     Total\n1         51.9  48.1 100.0\n2         45.2  54.8 100.0\n3         49.6  50.4 100.0\n8         71.8  28.2 100.0\n9         27.2  72.8 100.0\nEnsemble  49.2  50.8 100.0",
+    "crumbs": [
+      "{{<fa solid  person-chalkboard>}} Support de formation",
+      "Débuter avec R"
+    ]
+  },
+  {
+    "objectID": "support-061124.html#résumer-une-variable-numérique",
+    "href": "support-061124.html#résumer-une-variable-numérique",
+    "title": "Débuter avec R",
+    "section": "Résumer une variable numérique",
+    "text": "Résumer une variable numérique\nPour chaque calcul, ajouter l’option na.rm=TRUE car R ne calcule pas s’il y a des manquants (NA):\n\nmin(FPA$ap_renc,na.rm = TRUE)\n\n[1] 1955\n\nmax(FPA$ap_renc,na.rm = TRUE)\n\n[1] 2010\n\n\nOn peut le stocker dans un objet R comme valeur réutilisable\n\nanrencmin&lt;-min(FPA$ap_renc,na.rm = TRUE)",
+    "crumbs": [
+      "{{<fa solid  person-chalkboard>}} Support de formation",
+      "Débuter avec R"
+    ]
+  },
+  {
+    "objectID": "support-061124.html#calcul-dune-variable-numérique",
+    "href": "support-061124.html#calcul-dune-variable-numérique",
+    "title": "Débuter avec R",
+    "section": "Calcul d’une variable numérique",
+    "text": "Calcul d’une variable numérique\nOn va calculer depuis combien d’année les personnes sont ensembles\n\n#annee d'enquete (2008) - annee de rencontre\nFPA$durenc=2008-FPA$ap_renc\n# on regarde la moyenne\nmean(FPA$durenc,na.rm = TRUE)\n\n[1] 19.20671\n\n# ou directement le résumé avec\nsummary(FPA$durenc)\n\n   Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA's \n  -2.00   10.00   18.00   19.21   27.00   53.00   10644",
+    "crumbs": [
+      "{{<fa solid  person-chalkboard>}} Support de formation",
+      "Débuter avec R"
+    ]
+  },
+  {
+    "objectID": "support-061124.html#graphiques",
+    "href": "support-061124.html#graphiques",
+    "title": "Débuter avec R",
+    "section": "Graphiques",
+    "text": "Graphiques\nRappel: on selectionne le type de graphique selon le type des variables.\nPlus d’infos sur https://www.data-to-viz.com/)",
+    "crumbs": [
+      "{{<fa solid  person-chalkboard>}} Support de formation",
+      "Débuter avec R"
+    ]
+  },
+  {
+    "objectID": "support-061124.html#boite-à-moustaches",
+    "href": "support-061124.html#boite-à-moustaches",
+    "title": "Débuter avec R",
+    "section": "Boite à moustaches",
+    "text": "Boite à moustaches\nPour décrire une variable numérique continue:\n\nboxplot(FPA$durenc)\n\n\n\n\n\n\n\n\nAjout d’option titre, légende et couleur\n\nboxplot(FPA$durenc, main = \"Distribution de la durée de couple\",ylab = \"Année\",col=\"blue\")\n\n\n\n\n\n\n\n\nToutes les couleurs en anglais sont acceptées",
+    "crumbs": [
+      "{{<fa solid  person-chalkboard>}} Support de formation",
+      "Débuter avec R"
+    ]
+  },
+  {
+    "objectID": "support-061124.html#boite-à-moustaches-1",
+    "href": "support-061124.html#boite-à-moustaches-1",
+    "title": "Débuter avec R",
+    "section": "Boite à moustaches",
+    "text": "Boite à moustaches\nPour représenter le croisement entre une variable qualitative et une variable quantitative :\n\nboxplot(FPA$durenc~FPA$SEXEE,ylab=\"Année\",xlab=\"Sexe\")\n\n\n\n\n\n\n\n\nCliquez sur Zoom pour voir tous les labels lorsque vous avez beaucoup de valeurs",
+    "crumbs": [
+      "{{<fa solid  person-chalkboard>}} Support de formation",
+      "Débuter avec R"
+    ]
+  },
+  {
+    "objectID": "support-061124.html#nuage-de-point",
+    "href": "support-061124.html#nuage-de-point",
+    "title": "Débuter avec R",
+    "section": "Nuage de point",
+    "text": "Nuage de point\nPour représenter le croisement entre deux variables quantitatives\n\n#exemple avec ce jeu de données du package questionr\ndata(\"hdv2003\")\nplot(hdv2003$age,hdv2003$freres.soeurs)",
+    "crumbs": [
+      "{{<fa solid  person-chalkboard>}} Support de formation",
+      "Débuter avec R"
+    ]
+  },
+  {
+    "objectID": "support-061124.html#nuage-de-point-1",
+    "href": "support-061124.html#nuage-de-point-1",
+    "title": "Débuter avec R",
+    "section": "Nuage de point",
+    "text": "Nuage de point\nPour voir les points en transparence:\n\nplot(hdv2003$age, hdv2003$freres.soeurs, pch = 19, col = rgb(1, 0, 0, 0.1))",
+    "crumbs": [
+      "{{<fa solid  person-chalkboard>}} Support de formation",
+      "Débuter avec R"
+    ]
+  },
+  {
+    "objectID": "support-061124.html#diagramme-en-baton",
+    "href": "support-061124.html#diagramme-en-baton",
+    "title": "Débuter avec R",
+    "section": "Diagramme en baton",
+    "text": "Diagramme en baton\nPour représenter une variable qualitative\nEn vertical:\n\nplot(FPA$D_DISCRI)\n\n\n\n\n\n\n\n\nEn horizontal:\n\nbarplot(height=table(FPA$D_DISCRI),horiz=TRUE)",
+    "crumbs": [
+      "{{<fa solid  person-chalkboard>}} Support de formation",
+      "Débuter avec R"
+    ]
+  },
+  {
+    "objectID": "support-061124.html#diagramme-de-cleveland",
+    "href": "support-061124.html#diagramme-de-cleveland",
+    "title": "Débuter avec R",
+    "section": "Diagramme de Cleveland",
+    "text": "Diagramme de Cleveland\n\ndotchart(table(FPA$regionnaise2_11t))",
+    "crumbs": [
+      "{{<fa solid  person-chalkboard>}} Support de formation",
+      "Débuter avec R"
+    ]
+  },
+  {
+    "objectID": "support-061124.html#esquisse-faire-des-graphiques-sans-coder",
+    "href": "support-061124.html#esquisse-faire-des-graphiques-sans-coder",
+    "title": "Débuter avec R",
+    "section": "Esquisse: faire des graphiques sans coder",
+    "text": "Esquisse: faire des graphiques sans coder\nTelecharger une seule fois le package:\ninstall.packages(\"esquisse\")\nCliquer sur le menu Addins: ggplot2 builder \nImporter des données: soit dejà dans R: donc on selectionne “Environment” et on choisi la table R (ici FPA), Soit par un fichier exterieur (“External file”). On vérifie si les variables sont au bon format (numerique ou factor) dans l’onglet “Update”.\nSi c’est ok on clique sur “Import data”.\nOn arrive dans le menu avec toutes nos variables, selectionner dans X et Fill pour 2 variables qualitatives (en orange), ou X et Y pour 2 variables quantitatives (en bleu).",
+    "crumbs": [
+      "{{<fa solid  person-chalkboard>}} Support de formation",
+      "Débuter avec R"
+    ]
+  },
+  {
+    "objectID": "support-061124.html#esquisse",
+    "href": "support-061124.html#esquisse",
+    "title": "Débuter avec R",
+    "section": "Esquisse",
+    "text": "Esquisse\n\nOn peut facilement changer les couleurs, le type de graphique et récupérer le code (ggplot2)",
+    "crumbs": [
+      "{{<fa solid  person-chalkboard>}} Support de formation",
+      "Débuter avec R"
+    ]
+  },
+  {
+    "objectID": "support-061124.html#manipulation-des-données-avec-r-de-base",
+    "href": "support-061124.html#manipulation-des-données-avec-r-de-base",
+    "title": "Débuter avec R",
+    "section": "Manipulation des données avec R de base",
+    "text": "Manipulation des données avec R de base",
+    "crumbs": [
+      "{{<fa solid  person-chalkboard>}} Support de formation",
+      "Débuter avec R"
+    ]
+  },
+  {
+    "objectID": "support-061124.html#selection-de-variables-et-dobservation",
+    "href": "support-061124.html#selection-de-variables-et-dobservation",
+    "title": "Débuter avec R",
+    "section": "Selection de variables et d’observation",
+    "text": "Selection de variables et d’observation\nEntre crochet on a la selection de ligne , selection de colonne\n\nextrait=FPA[1:100, 1:12] \n\nNouvelle base extrait qui contient les 100 premières lignes et la 1ère à la 12ème variables (ou colonnes) de la base FPA.",
+    "crumbs": [
+      "{{<fa solid  person-chalkboard>}} Support de formation",
+      "Débuter avec R"
+    ]
+  },
+  {
+    "objectID": "support-061124.html#selection-de-variables-ou-colonnes",
+    "href": "support-061124.html#selection-de-variables-ou-colonnes",
+    "title": "Débuter avec R",
+    "section": "Selection de variables (ou colonnes)",
+    "text": "Selection de variables (ou colonnes)\n\nextrait=FPA[, 3:12] \n#ou on nomme les noms des variables\nextrait2= FPA[, c(\"GROUP1\", \"SEXEE\", \"D_DISCRI\")]\n\nou supprimer des variables:\n\nextrait2=FPA[,-c(2:3)]",
+    "crumbs": [
+      "{{<fa solid  person-chalkboard>}} Support de formation",
+      "Débuter avec R"
+    ]
+  },
+  {
+    "objectID": "support-061124.html#selection-dobservations-ou-de-lignes",
+    "href": "support-061124.html#selection-dobservations-ou-de-lignes",
+    "title": "Débuter avec R",
+    "section": "Selection d’observations (ou de lignes)",
+    "text": "Selection d’observations (ou de lignes)\nex : Selection de tous les hommes\n\ndh &lt;- FPA[FPA$SEXEE == \"1\", ]   \n\nSelection de toutes les lignes sauf les hommes (donc selection des femmes)\n\ndf &lt;- FPA[FPA$SEXEE != \"1\", ]  \n\nNous verrons qu’avec le package dplyr, la selection de variable ou d’observation et tout autre manipulation sur les données sera facilitées.",
+    "crumbs": [
+      "{{<fa solid  person-chalkboard>}} Support de formation",
+      "Débuter avec R"
+    ]
+  },
+  {
+    "objectID": "support-061124.html#convertir-des-données",
+    "href": "support-061124.html#convertir-des-données",
+    "title": "Débuter avec R",
+    "section": "Convertir des données",
+    "text": "Convertir des données\n\n#De numérique ou caractère à facteur \nFPA$ap_rencfac &lt;- factor(FPA$ap_renc)\n\n#De facteur ou numérique en caractère:\nFPA$regionnaisc &lt;- as.character(FPA$regionnaise2_11t)\n\n#Convertir en numérique\ntest &lt;- as.numeric(as.character(FPA$T_DIPLOM))",
+    "crumbs": [
+      "{{<fa solid  person-chalkboard>}} Support de formation",
+      "Débuter avec R"
+    ]
+  },
+  {
+    "objectID": "support-061124.html#recodage-et-création-de-variables",
+    "href": "support-061124.html#recodage-et-création-de-variables",
+    "title": "Débuter avec R",
+    "section": "Recodage et création de variables",
+    "text": "Recodage et création de variables\nLa commande levels donne les résultats suivants :\n\nlevels(FPA$D_DISCRI)\n\n[1] \"1\" \"2\" \"3\" \"8\" \"9\"\n\n#On recode \nlevels(FPA$D_DISCRI)&lt;-c(\"Souvent\" ,\"Parfois\" , \"Jamais\",\"Refuse de répondre\",\"Ne sait pas\")\nlevels(FPA$D_DISCRI)\n\n[1] \"Souvent\"            \"Parfois\"            \"Jamais\"            \n[4] \"Refuse de répondre\" \"Ne sait pas\"",
+    "crumbs": [
+      "{{<fa solid  person-chalkboard>}} Support de formation",
+      "Débuter avec R"
+    ]
+  },
+  {
+    "objectID": "support-061124.html#recodage-et-création-de-variables-1",
+    "href": "support-061124.html#recodage-et-création-de-variables-1",
+    "title": "Débuter avec R",
+    "section": "Recodage et création de variables",
+    "text": "Recodage et création de variables\nEn clic bouton vous pouvez utiliser iorder, icut et irec (du package questionr) et récupérer le code:\n\npour réordonner des valeur: iorder(FPA$D_DISCRI)\npour classer des variables numériques (ex: classe d’âge): icut(hdv2003)\npour créer et recoder plus facilement: irec(FPA$D_DISCRI)\n N’oubliez pas de faire executer le code généré.",
+    "crumbs": [
+      "{{<fa solid  person-chalkboard>}} Support de formation",
+      "Débuter avec R"
+    ]
+  },
+  {
+    "objectID": "support-061124.html#organiser-et-traiter-plus-facilement-ses-données-avec-le-package-dplyr",
+    "href": "support-061124.html#organiser-et-traiter-plus-facilement-ses-données-avec-le-package-dplyr",
+    "title": "Débuter avec R",
+    "section": "Organiser et traiter plus facilement ses données avec le package dplyr",
+    "text": "Organiser et traiter plus facilement ses données avec le package dplyr",
+    "crumbs": [
+      "{{<fa solid  person-chalkboard>}} Support de formation",
+      "Débuter avec R"
+    ]
+  },
+  {
+    "objectID": "support-061124.html#package-dplyr",
+    "href": "support-061124.html#package-dplyr",
+    "title": "Débuter avec R",
+    "section": "Package dplyr",
+    "text": "Package dplyr\nPackage développé par Hadley Wickham,(R Studio) qui a aussi développé ggplot2 et fait partie du tidyverse (ensemble de packages qui fonctionne ensemble). Utilisation d’une grammaire {dplyr}, composée essentiellement de 5 verbes qui vont indiquer des opérations courantes sur les lignes et les colonnes d’une structure de données.\nInstaller et activer le package avant de commencer:\n\nlibrary(dplyr)\n# ou installer tidyverse qui contient tous les packages utiles par la suite\nlibrary(tidyverse)",
+    "crumbs": [
+      "{{<fa solid  person-chalkboard>}} Support de formation",
+      "Débuter avec R"
+    ]
+  },
+  {
+    "objectID": "support-061124.html#les-5-verbes-ou-fonction-de-base-de-dplyr",
+    "href": "support-061124.html#les-5-verbes-ou-fonction-de-base-de-dplyr",
+    "title": "Débuter avec R",
+    "section": "Les 5 verbes (ou fonction) de base de dplyr",
+    "text": "Les 5 verbes (ou fonction) de base de dplyr\nSe poser les questions:\n- Sur quel data frame je travaille ?\n- Que dois je faire avec ?\n\nselect(): Sélection de colonnes (variables)\nfilter(): Sélection de lignes (observations)\narrange(): Ordonne les lignes du dataframe (ou table)\nmutate(): Ajout de colonnes (création de variables)\nsummarise(): Production de statistiques résumées",
+    "crumbs": [
+      "{{<fa solid  person-chalkboard>}} Support de formation",
+      "Débuter avec R"
+    ]
+  },
+  {
+    "objectID": "support-061124.html#select-sélection-de-variables",
+    "href": "support-061124.html#select-sélection-de-variables",
+    "title": "Débuter avec R",
+    "section": "Select: Sélection de variables",
+    "text": "Select: Sélection de variables\nselect() permet de définir une liste de variables à sélectionner dans le data frame résultant.\nSyntaxe : select(dataframe,liste_de_variables)\nListe de variables séparées par des “,” ou :\nFacilités d’écriture pour éviter d’écrire de nombreuses variables:\nstarts_with(): commence par\nends_with() : fini par\ncontains() : contient\none_of() : contient un ensemble d’éléments\neverything(): toutes les variables\nExemples :\n\nFPA_v2=select(FPA,D_DISCRI,SEXEE,regionnaise2_11t,GROUP1) # ouvrir la table a pour voir le résultat à chaque fois\nFPA_v2=select(FPA,GROUP1:D_DISCRI) # on selectionne les variables GROUP1 à D_DISCRI\nFPA_v2=select(FPA,GROUP1,starts_with(\"D_\")) # on selectionne les variables GROUP1 et toutes celles commençant par \"D_\" (variables de discrimminations)\nFPA_v2=select(FPA,contains(\"GROUP\")) # on selectionne les variables qui contiennent le mot \"GROUP\" dans le nom de la variable  \n  \n#Supprimer des variables avec -  \nFPA_v2=select(FPA,-starts_with(\"C_\")) # on supprime les variables qui commencent par \"C_\"\nFPA_v2=select(FPA,-ends_with(\"_E\")) # on supprime les variables qui finissent par \"_E\"\nFPA_v2=select(FPA,-contains(\"_\")) # on supprime les variable qui contiennent un _ (trait souligné)\nFPA_v2=select(FPA, -GROUP1CA, -nbunions_t) # on supprime les variables GROUP1CA et nbunions_t",
+    "crumbs": [
+      "{{<fa solid  person-chalkboard>}} Support de formation",
+      "Débuter avec R"
+    ]
+  },
+  {
+    "objectID": "support-061124.html#filter-sélection-dobservations",
+    "href": "support-061124.html#filter-sélection-dobservations",
+    "title": "Débuter avec R",
+    "section": "Filter: Sélection d’observations",
+    "text": "Filter: Sélection d’observations\nfilter() permet de définir une liste d’observations sélectionnées en regard de conditions\nExemples:\n\nFPA_v2= filter(FPA,GROUP1==1)\nFPA_v2= filter(FPA, GROUP1==1 & D_DISCRI %in% c(\"Souvent\",\"Parfois\"))\nFPA_v2= filter(FPA,is.na(F_DIP)) # selection des manquants\n\nOn utlise %in% lorsqu’on selectionne plusieurs valeurs, si on en selectionne une seule valeur c’est ==.\nSelection des valeurs qui contiennent tel mot (equivalent contains) avec grepl\nex: selection des valeurs qui contiennent le mot Etudiant\ntest=filter(FPA, grepl('Couple',TYPM5_MEN))",
+    "crumbs": [
+      "{{<fa solid  person-chalkboard>}} Support de formation",
+      "Débuter avec R"
+    ]
+  },
+  {
+    "objectID": "support-061124.html#arrange-trier-les-observations",
+    "href": "support-061124.html#arrange-trier-les-observations",
+    "title": "Débuter avec R",
+    "section": "Arrange: Trier les observations",
+    "text": "Arrange: Trier les observations\narrange() permet de réordonner les observations en fonction de clés de tris. Une option desc permet de trier par valeurs décroissantes. Il est possible d’indiquer plusieurs clés d’ordonnancement.\nExemples:\n\n# croissant:\nFPA_v2=arrange(FPA,SEXEE,D_DISCRI)\n# decroissant:\nFPA_v2=arrange(FPA,desc(SEXEE))",
+    "crumbs": [
+      "{{<fa solid  person-chalkboard>}} Support de formation",
+      "Débuter avec R"
+    ]
+  },
+  {
+    "objectID": "support-061124.html#mutate-création-de-variables",
+    "href": "support-061124.html#mutate-création-de-variables",
+    "title": "Débuter avec R",
+    "section": "Mutate: Création de variables",
+    "text": "Mutate: Création de variables\nmutate() permet de créer une variable en fonction de variables existantes.\nExemples:\n\n#ifelse pour creer une variable avec 2 valeurs (equivalent de =SI() dans Excel)\nFPA_v2=mutate(FPA,discri=ifelse(D_DISCRI %in% c(\"1\",\"2\"),\"1\",\"0\"))\n\n#case_when() pour des conditions avec plusieurs modalités\nFPA_v2=mutate(FPA_v2,group2=case_when(\n  GROUP1 %in% c(\"1\",\"2\") ~ \"Immigrés (ou natif DOM)\",\n  GROUP1 == \"5\" ~ \"Groupe majoritaire\", \n  GROUP1 %in% c(\"3\",\"4\") & (regionnaism2_11t ==\"France métro\" | regionnaisp2_11t ==\"France métro\")  ~ \"Descendant d'un immigré\",\n  GROUP1 %in% c(\"3\",\"4\") & (regionnaism2_11t !=\"France métro\" & regionnaisp2_11t !=\"France métro\")  ~ \"Descendant 2 immigrés\",\n  GROUP1 %in% c(\"3\",\"4\") & (is.na(regionnaism2_11t) | is.na(regionnaisp2_11t))  ~ \"Descendant 2 immigrés\"))\n#l'ordre de ces conditions est important : Il faut aller du plus spécifique au plus général. \n\n#verifier\ntable(FPA_v2$discri,FPA_v2$D_DISCRI)\n\n   \n    Souvent Parfois Jamais Refuse de répondre Ne sait pas\n  0    1028    3849  16784                  7          93\n\ntable(FPA_v2$group2,FPA_v2$GROUP1)\n\n                         \n                             1    2    3    4    5\n  Descendant 2 immigrés      0    0 5090  346    0\n  Descendant d'un immigré    0    0 3071  305    0\n  Groupe majoritaire         0    0    0    0 3781\n  Immigrés (ou natif DOM) 8456  712    0    0    0",
+    "crumbs": [
+      "{{<fa solid  person-chalkboard>}} Support de formation",
+      "Débuter avec R"
+    ]
+  },
+  {
+    "objectID": "support-061124.html#chainage-des-opérations-avec-le-pipe",
+    "href": "support-061124.html#chainage-des-opérations-avec-le-pipe",
+    "title": "Débuter avec R",
+    "section": "Chainage des opérations avec le “pipe” %>%",
+    "text": "Chainage des opérations avec le “pipe” %&gt;%\nUne fois qu’on connait ces premiers élements l’interêt est de pouvoir les combiner.\nPar exemple :\n\n#peu lisible\nFPA_v2&lt;-arrange(select(filter(FPA, SEXEE == \"2\"),SEXEE, starts_with(\"D_\")))\n#ou remettre à chaque fois le nom de la table\ntmp &lt;- filter(FPA,  SEXEE == \"2\")\ntmp &lt;- select(tmp,SEXEE, D_DISCRI, D_PQDISC_A, D_PQDISC_B)\narrange(tmp, D_DISCRI)\n\n# A tibble: 11,480 × 4\n   SEXEE D_DISCRI D_PQDISC_A D_PQDISC_B\n   &lt;fct&gt; &lt;fct&gt;    &lt;fct&gt;      &lt;fct&gt;     \n 1 2     Souvent  0          0         \n 2 2     Souvent  0          1         \n 3 2     Souvent  0          0         \n 4 2     Souvent  0          0         \n 5 2     Souvent  0          0         \n 6 2     Souvent  1          1         \n 7 2     Souvent  0          0         \n 8 2     Souvent  1          0         \n 9 2     Souvent  1          0         \n10 2     Souvent  0          0         \n# ℹ 11,470 more rows\n\n#Avec dplyr et le %\\&gt;% on obtient:\nhdvf&lt;- FPA %&gt;% \n  filter(SEXEE == \"2\") %&gt;% \n  select(SEXEE, starts_with(\"D_\")) %&gt;% \n  arrange(D_DISCRI)  \n\n# Autre exemple:\nFPA_v2 &lt;- FPA %&gt;%\n  filter(GROUP1 %in% c(\"1\",\"2\")) %&gt;%\n  mutate(discri=ifelse(D_DISCRI %in% c(\"1\",\"2\"),\"1\",\"0\"))",
+    "crumbs": [
+      "{{<fa solid  person-chalkboard>}} Support de formation",
+      "Débuter avec R"
+    ]
+  },
+  {
+    "objectID": "support-061124.html#la-fonction-group_by",
+    "href": "support-061124.html#la-fonction-group_by",
+    "title": "Débuter avec R",
+    "section": "La fonction group_by",
+    "text": "La fonction group_by\nLa fonction group_by s’utilise avec les %&gt;% et permet de définir des groupes de lignes à partir des valeurs d’une ou plusieurs colonnes\nExemples :\n\n# creation de variable avec group by:\nFPA_v3 &lt;- FPA %&gt;% \n  group_by(SEXEE) %&gt;% \n  mutate(moyrenc = mean(durenc, na.rm = TRUE)) %&gt;%\n  select(SEXEE,GROUP1,durenc,moyrenc)\n\n# group_by peut aussi être utile avec filter :\nFPA_v3 &lt;- FPA %&gt;% \n  group_by(SEXEE) %&gt;% \n  filter(durenc == max(durenc, na.rm = TRUE))",
+    "crumbs": [
+      "{{<fa solid  person-chalkboard>}} Support de formation",
+      "Débuter avec R"
+    ]
+  },
+  {
+    "objectID": "support-061124.html#la-fonction-summarise",
+    "href": "support-061124.html#la-fonction-summarise",
+    "title": "Débuter avec R",
+    "section": "La fonction summarise",
+    "text": "La fonction summarise\nsummarise() permet de produire des statistiques à un niveau agrégé. Il faut indiquer le(s) critère(s) d’agrégation et la (les) statistique(s) à calculer.\n\nUne instruction group_by est indispensable pour specifier en amont les critères d’agregation\nQuelques exemples de fonctions : count, mean, sum, max\nIl est possible de préciser des conditions dans les calculs (exemple sum(x&gt;10))",
+    "crumbs": [
+      "{{<fa solid  person-chalkboard>}} Support de formation",
+      "Débuter avec R"
+    ]
+  },
+  {
+    "objectID": "support-061124.html#la-fonction-summarise-1",
+    "href": "support-061124.html#la-fonction-summarise-1",
+    "title": "Débuter avec R",
+    "section": "La fonction summarise",
+    "text": "La fonction summarise\nLe résultat peut être stocké au niveau individuel (mutate) ou agrégé (summarise)\nUne option na.rm=T permet d’éliminer les observations pour lesquelles figure une valeur manquante.\nUne instruction ungroup() peut être necessaire pour réinitaliser le calcul de variables individuelles.\nExemple:\n\nFPA %&gt;% \n  summarise(minanneer = min(ap_renc, na.rm=TRUE),\n            maxanneer = max(ap_renc, na.rm=TRUE))\n\n# A tibble: 1 × 2\n  minanneer maxanneer\n      &lt;dbl&gt;     &lt;dbl&gt;\n1      1955      2010\n\n# avec group by\nFPA %&gt;%\n  group_by(SEXEE) %&gt;%\n  summarise(minanneer = min(ap_renc, na.rm=TRUE),\n            maxanneer = max(ap_renc, na.rm=TRUE),\n            Nbpers = n())\n\n# A tibble: 2 × 4\n  SEXEE minanneer maxanneer Nbpers\n  &lt;fct&gt;     &lt;dbl&gt;     &lt;dbl&gt;  &lt;int&gt;\n1 1          1960      2009  10281\n2 2          1955      2010  11480\n\n# Le resultat peut aussi etre stocké à un niveau individuel \nresult=FPA %&gt;%\n  group_by(SEXEE) %&gt;%\n  summarise(minanneer = min(ap_renc, na.rm=TRUE),\n            maxanneer = max(ap_renc, na.rm=TRUE),\n            Nbpers = n())",
+    "crumbs": [
+      "{{<fa solid  person-chalkboard>}} Support de formation",
+      "Débuter avec R"
+    ]
+  },
+  {
+    "objectID": "support-061124.html#calculer-un-rang",
+    "href": "support-061124.html#calculer-un-rang",
+    "title": "Débuter avec R",
+    "section": "Calculer un rang",
+    "text": "Calculer un rang\n\nFPA = FPA %&gt;%\n#  group_by(SEXEE) %&gt;%\n  mutate(rang=row_number())",
+    "crumbs": [
+      "{{<fa solid  person-chalkboard>}} Support de formation",
+      "Débuter avec R"
+    ]
+  },
+  {
+    "objectID": "support-061124.html#reproduire-les-résultats-du-popsoc",
+    "href": "support-061124.html#reproduire-les-résultats-du-popsoc",
+    "title": "Débuter avec R",
+    "section": "Reproduire les résultats du Pop&soc",
+    "text": "Reproduire les résultats du Pop&soc",
+    "crumbs": [
+      "{{<fa solid  person-chalkboard>}} Support de formation",
+      "Débuter avec R"
+    ]
+  },
+  {
+    "objectID": "support-061124.html#reproduire-les-résultats-du-popsoc-1",
+    "href": "support-061124.html#reproduire-les-résultats-du-popsoc-1",
+    "title": "Débuter avec R",
+    "section": "Reproduire les résultats du Pop&soc",
+    "text": "Reproduire les résultats du Pop&soc",
+    "crumbs": [
+      "{{<fa solid  person-chalkboard>}} Support de formation",
+      "Débuter avec R"
+    ]
+  },
+  {
+    "objectID": "support-061124.html#les-jointures-et-empilements",
+    "href": "support-061124.html#les-jointures-et-empilements",
+    "title": "Débuter avec R",
+    "section": "Les jointures et empilements",
+    "text": "Les jointures et empilements\nSyntaxe générale:\nType_de_jointure(dataframes, by=\"cle\")\nLes clés de jointure peuvent être de noms différents.\nPlusieurs types de jointure dans dplyr (équivalent du code sql):\nInner join: Selection des observations communes entre les 2 tables. \nExemple: teo3 = inner_join(teo1,teo2,by=\"id\")",
+    "crumbs": [
+      "{{<fa solid  person-chalkboard>}} Support de formation",
+      "Débuter avec R"
+    ]
+  },
+  {
+    "objectID": "support-061124.html#les-jointures",
+    "href": "support-061124.html#les-jointures",
+    "title": "Débuter avec R",
+    "section": "Les jointures",
+    "text": "Les jointures\n\nFull join: Selection de toutes les observations  Exemple si l’identifiant n’a pas le même nom: teo3=full_join(teo1,teo2, by = c(\"id\" = \"id2\"))\nLeft join: Selection des observations présentes dans la première table \nRight join: Selection des observations présentes dans la deuxième table \n\nUne “cheat sheet” de R Studio sur les jointures résume bien ce que ça fait:",
+    "crumbs": [
+      "{{<fa solid  person-chalkboard>}} Support de formation",
+      "Débuter avec R"
+    ]
+  },
+  {
+    "objectID": "support-061124.html#les-jointures-1",
+    "href": "support-061124.html#les-jointures-1",
+    "title": "Débuter avec R",
+    "section": "Les jointures",
+    "text": "Les jointures\n\nSemi join: garde que les lignes et colonnes de table1 presente aussi dans table2\nAnti join: garde que les lignes et colonnes dans table1 et pas dans table2",
+    "crumbs": [
+      "{{<fa solid  person-chalkboard>}} Support de formation",
+      "Débuter avec R"
+    ]
+  },
+  {
+    "objectID": "support-061124.html#les-jointures-2",
+    "href": "support-061124.html#les-jointures-2",
+    "title": "Débuter avec R",
+    "section": "Les jointures",
+    "text": "Les jointures\nIl faut que les variables soient communes entre les 2 tables jointes pour utiliser les fonctions ci-dessous (pas besoin de clé de jointure):",
+    "crumbs": [
+      "{{<fa solid  person-chalkboard>}} Support de formation",
+      "Débuter avec R"
+    ]
+  },
+  {
+    "objectID": "support-061124.html#les-empilements",
+    "href": "support-061124.html#les-empilements",
+    "title": "Débuter avec R",
+    "section": "Les empilements",
+    "text": "Les empilements\nLorsque les variables sont les memes entre 2 tables et que les individus sont différents :\nbind_rows()\nExemple:\n\nteo_fin = bind_rows(teo1,teo2)\n\n# pour voir de quel table viennent les lignes: .id\nteo_fin=bind_rows(teo1,teo2, .id = \"source\")",
+    "crumbs": [
+      "{{<fa solid  person-chalkboard>}} Support de formation",
+      "Débuter avec R"
+    ]
+  },
+  {
+    "objectID": "support-061124.html#limites-des-jointures",
+    "href": "support-061124.html#limites-des-jointures",
+    "title": "Débuter avec R",
+    "section": "Limites des jointures",
+    "text": "Limites des jointures\n\nVariables de même nom conservées dans le dataframe de sortie (avec suffixe .x et .y par défaut)\nPas de possibilité de lier directement 3 dataframes via dplyr",
+    "crumbs": [
+      "{{<fa solid  person-chalkboard>}} Support de formation",
+      "Débuter avec R"
+    ]
+  },
+  {
+    "objectID": "support-061124.html#transformation-des-données",
+    "href": "support-061124.html#transformation-des-données",
+    "title": "Débuter avec R",
+    "section": "Transformation des données",
+    "text": "Transformation des données\nTidy datas : Par définition, une donnée est représentée par une valeur sur une ligne (observation) pour une mesure (variable). Sinon, il faut transformer les données.\n\nlibrary(tidyr)\n\n\nC’est notamment très utilisé si on souhaite passer d’une base individus à une base ménage ou inversement.",
+    "crumbs": [
+      "{{<fa solid  person-chalkboard>}} Support de formation",
+      "Débuter avec R"
+    ]
+  },
+  {
+    "objectID": "support-061124.html#pivot_wider-de-long-en-large",
+    "href": "support-061124.html#pivot_wider-de-long-en-large",
+    "title": "Débuter avec R",
+    "section": "Pivot_wider : de long en large",
+    "text": "Pivot_wider : de long en large\nPermet de restructurer un dataframe par information (1 ligne = 1 information, et non un individu)\nIci nous allons voir comment passer d’une observation niveau logement à une observation niveau individu ?\nAvec le code de base puis en améliorant le code au fur et à mesure\n\n# Fichier en entree \nLOG=read.csv2(\"./materiel/LOG.csv\")\n\n# code de base: pivot_wider\nIND= LOG %&gt;% pivot_wider(names_from = Age, values_from = SO_LOG)\n\n# on retire la variable dep_log pour obtenir un seul individu par ligne\nIND = LOG %&gt;% \n  select(-DEPT_LOG) %&gt;% \n  pivot_wider(names_from = Age, values_from = SO_LOG)\n\n# on ajoute le suffixe age comme nom de variable\nIND = LOG %&gt;% \n  select(-DEPT_LOG) %&gt;%\n  mutate(Age=paste0(\"Age\",Age)) %&gt;%\n  pivot_wider(names_from = Age, values_from = SO_LOG)\n\n# On garde uniquement les changements de STATUT \nIND2 = LOG %&gt;% \n  arrange(IDENT,Age) %&gt;%\n  group_by(IDENT) %&gt;%\n  filter(SO_LOG!=lag(SO_LOG) | row_number()==1) %&gt;%\n  mutate(Rang=paste0(\"STA_\",row_number())) %&gt;%\n  select(-DEPT_LOG,-Age) %&gt;%\n  pivot_wider(names_from = Rang, values_from = SO_LOG)\n\n# resultat\nhead(IND2)\n\n# A tibble: 6 × 6\n# Groups:   IDENT [6]\n  IDENT STA_1   STA_2             STA_3        STA_4           STA_5\n  &lt;int&gt; &lt;chr&gt;   &lt;chr&gt;             &lt;chr&gt;        &lt;chr&gt;           &lt;chr&gt;\n1   101 Parents \"Propri�taire\"    &lt;NA&gt;         &lt;NA&gt;            &lt;NA&gt; \n2   102 Parents \"Locataire priv�\" Propri�taire &lt;NA&gt;            &lt;NA&gt; \n3   103 Parents \"Autre\"           Propri�taire &lt;NA&gt;            &lt;NA&gt; \n4   104 Parents \"\"                HLM          Propri�taire    &lt;NA&gt; \n5   105 Parents \"\"                Parents      Locataire priv� &lt;NA&gt; \n6   106 Parents \"HLM\"             Propri�taire &lt;NA&gt;            &lt;NA&gt;",
+    "crumbs": [
+      "{{<fa solid  person-chalkboard>}} Support de formation",
+      "Débuter avec R"
+    ]
+  },
+  {
+    "objectID": "support-061124.html#pivot_longer-de-large-en-long",
+    "href": "support-061124.html#pivot_longer-de-large-en-long",
+    "title": "Débuter avec R",
+    "section": "Pivot_longer : de large en long",
+    "text": "Pivot_longer : de large en long\nExemple : Comment passer d’une observation niveau individu (vecteur de positions résidentielles) à une observation niveau logement ?\n\nLOG2 = IND %&gt;% \n  pivot_longer(starts_with(\"Age\"), names_to = \"Age\", values_to = \"SO_LOG\") %&gt;% \n  filter (SO_LOG != is.na(SO_LOG)) %&gt;% # on retire si c'est manquant\n  arrange(IDENT)\n\n#On revient au fichier d'origine\n\nAutre exemple:\n\nPop = data.frame( Pays=c(\"Danemark\",\"Finlande\",\"Norvege\",\"Suede\"),\n                  Pop1980=c(5120,4771,4079,8303),\n                  Pop1990=c(5135,4974,4233,8527),\n                  Pop2000=c(5330,5171,4478,8861),\n                  Pop2010=c(5535,5351,4855,9341))\nView(Pop)\n\nPopLong=Pop  %&gt;%\n  pivot_longer(c(Pop1980, Pop1990, Pop2000,Pop2010), names_to = \"Var\", values_to = \"Valeur\")\n# même chose avec stats_with pour ne pas écrire toutes les variables\nPopLong=Pop  %&gt;%\n  pivot_longer(starts_with(\"Pop\"), names_to = \"Var\", values_to = \"Valeur\")\n\n\n# La transformation de cette table nous permet maintenant de réaliser le graphique suivant:\nPopLong %&gt;%\n  mutate(annee=as.numeric(substr(Var,4,7))) %&gt;%\n  ggplot(aes(x = annee, y = Valeur, color = Pays)) +\n  geom_line()",
+    "crumbs": [
+      "{{<fa solid  person-chalkboard>}} Support de formation",
+      "Débuter avec R"
+    ]
+  },
+  {
+    "objectID": "support-061124.html#traitements-massifs-et-opérations-sur-les-métadonnées",
+    "href": "support-061124.html#traitements-massifs-et-opérations-sur-les-métadonnées",
+    "title": "Débuter avec R",
+    "section": "Traitements massifs et opérations sur les métadonnées",
+    "text": "Traitements massifs et opérations sur les métadonnées\nL’objectif est de pouvoir appliquer plusieurs fonctions à plusieurs variables.\nA partir d’un fichier contenant des caractéristiques démographiques de communes d’Ile de France de 1954 à 1990, on cherche à déterminer quelles sont les populations minimales, moyennes et maximales des populations 1968 à 1990, par département ?\n\n\n# Intégration des données\nload(\"./materiel/idf1.RData\")\n\n# summarise_all  \nX = idf1 %&gt;%   \n select(dep,starts_with(\"pt\"),starts_with(\"na\")) %&gt;%  \n  group_by(dep) %&gt;%  \n  summarise_all(funs(min,max,mean))  \n\n# summarise_at  \nX2 = idf1 %&gt;%  \n  group_by(dep) %&gt;%  \n  summarise_at(vars(starts_with(\"pt\")),funs(min,max,mean))",
+    "crumbs": [
+      "{{<fa solid  person-chalkboard>}} Support de formation",
+      "Débuter avec R"
+    ]
+  },
+  {
+    "objectID": "support-061124.html#traitements-massifs-et-opérations-sur-les-métadonnées-1",
+    "href": "support-061124.html#traitements-massifs-et-opérations-sur-les-métadonnées-1",
+    "title": "Débuter avec R",
+    "section": "Traitements massifs et opérations sur les métadonnées",
+    "text": "Traitements massifs et opérations sur les métadonnées\nTransformer toutes les variables de type facteur en variable de type caractère h2 = FPA %&gt;% mutate_if(is.factor,as.character)\nRenommer une série de variables:\nrename_at\nRecodification automatique:\nmutate_at\nChangement de type:\nmutate_if",
+    "crumbs": [
+      "{{<fa solid  person-chalkboard>}} Support de formation",
+      "Débuter avec R"
+    ]
+  },
+  {
+    "objectID": "support-061124.html#sauvegarder-son-travail-et-recharger-ses-données",
+    "href": "support-061124.html#sauvegarder-son-travail-et-recharger-ses-données",
+    "title": "Débuter avec R",
+    "section": "Sauvegarder son travail et recharger ses données",
+    "text": "Sauvegarder son travail et recharger ses données\nLes programmes R sont enregistrés avec l’extension .R, on peut l’ouvrir avec bloc note ou word.\n\nSauvegarder son dataframe:\nsave(FPA_v2, file = \"teo_fin.RData\")\nSauvegarder son projet ou son environnement R Studio:\nsave.image(\"travail_teo.RData\")\nRecharger ses données R:\nload(\"teo_fin.RData\")",
+    "crumbs": [
+      "{{<fa solid  person-chalkboard>}} Support de formation",
+      "Débuter avec R"
+    ]
+  },
+  {
+    "objectID": "support-061124.html#exporter-dans-un-fichier-excel",
+    "href": "support-061124.html#exporter-dans-un-fichier-excel",
+    "title": "Débuter avec R",
+    "section": "Exporter dans un fichier excel",
+    "text": "Exporter dans un fichier excel\n\nlibrary(\"writexl\")\nwrite_xlsx(FPA,\"./materiel/teo.xlsx\")",
+    "crumbs": [
+      "{{<fa solid  person-chalkboard>}} Support de formation",
+      "Débuter avec R"
+    ]
+  },
+  {
+    "objectID": "support-061124.html#références",
+    "href": "support-061124.html#références",
+    "title": "Débuter avec R",
+    "section": "Références",
+    "text": "Références\n\nRzine, pour la diffusion et le partage de ressources sur la pratique de R en Sciences Humaines et Sociales:\nhttps://rzine.fr/\nTidyverse :\nhttps://www.tidyverse.org/\nDocumentation de Julien Barnier :\nhttps://juba.github.io/tidyverse/02-prise_en_main.html\nDocumentation de Joseph Larmarange :\nhttp://larmarange.github.io/analyse-R/presentation-et-philosophie.html",
+    "crumbs": [
+      "{{<fa solid  person-chalkboard>}} Support de formation",
+      "Débuter avec R"
+    ]
+  },
+  {
+    "objectID": "support-061124.html#références-1",
+    "href": "support-061124.html#références-1",
+    "title": "Débuter avec R",
+    "section": "Références",
+    "text": "Références\n\nWickham, Hadley. «Tidy Data». Journal of Statistical Software; Vol 1, Issue 10 (2014) :\nhttps://www.jstatsoft.org/v059/i10\nCheat sheets :\nhttps://www.rstudio.com/resources/cheatsheets/\nSéminaire RUSS :\nhttps://russ.site.ined.fr/",
+    "crumbs": [
+      "{{<fa solid  person-chalkboard>}} Support de formation",
+      "Débuter avec R"
+    ]
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Débuter avec R",
+    "section": "",
+    "text": "Note\n\n\n\n\nJ’ai mis le dépôt gitlab en mode public contrairement au dépôt de la première version: https://gitlab.com/mthevenin/website_lifeobs2.\n\nPermet d’accéder à la base de données de la formation.\nPermet de récupérer les fichiers du dépôt (conseillé via zip: code =&gt; zip).",
+    "crumbs": [
+      "{{< fa solid house-user>}} Accueil",
+      "Présentation"
+    ]
+  },
+  {
+    "objectID": "index.html#le-projet-lifeobs",
+    "href": "index.html#le-projet-lifeobs",
+    "title": "Débuter avec R",
+    "section": "Le projet Lifeobs",
+    "text": "Le projet Lifeobs\n\n\n\nLifeObs, l’Observatoire français des parcours de vie, est une infrastructure de recherche qui vise à développer un programme d’enquêtes longitudinales et innovantes sur les comportements familiaux, à accroître la diffusion des données, et à former les utilisateurs. LifeObs, lauréat du programme Équipements structurants pour la recherche » du PIA3 en 2020, est financé sur huit ans à partir de février 2021. \n\n\n\n\n\n\nCe travail a bénéficié d’une aide de l’État gérée par l’Agence Nationale de la Recherche au titre de France 2030 portant la référence ANR-21-ESRE-0037.",
+    "crumbs": [
+      "{{< fa solid house-user>}} Accueil",
+      "Présentation"
+    ]
+  },
+  {
+    "objectID": "index.html#formateurs",
+    "href": "index.html#formateurs",
+    "title": "Débuter avec R",
+    "section": "Formateurs",
+    "text": "Formateurs\n\n Elodie Baril:\n\n Institut National des Etudes Démographiques\n elodie.baril@ined.fr\n\n\n\n\n Arnaud Bringé:\n\n Institut National des Etudes Démographiques\n arnaud.bringe@ined.fr",
+    "crumbs": [
+      "{{< fa solid house-user>}} Accueil",
+      "Présentation"
+    ]
+  },
+  {
+    "objectID": "dico_code.html",
+    "href": "dico_code.html",
+    "title": "Dictionnaire des Codes",
+    "section": "",
+    "text": "Note\n\n\n\n\nDictionnaire en pleine page\nEn dessous, inséré avec une iframe. Un peu compliqué vu la longueur du fichier.",
+    "crumbs": [
+      "{{<fa solid toolbox>}} Matériel",
+      "Dictionnaire des codes"
+    ]
+  },
+  {
+    "objectID": "biblio.html",
+    "href": "biblio.html",
+    "title": "Bibliographie",
+    "section": "",
+    "text": "Résultats de recherche\n\n\nBeauchemin, Cris, Christelle Hamel, Maud Lesné, Patrick Simon, et Equipe TeO. 2010. « Les discriminations : une question de minorités visibles ». Population et Sociétés, avril. https://www.ined.fr/fr/publications/population-et-societes/les-discriminations-une-question-de-minorites-visibles/.\n\n\n\n\nLogiciels\n\n\nBarnier, Julien. 2023. Introduction à R et au Tidyverse. https://juba.github.io/tidyverse/.\n\n\nThévenin, Marc. 2024. « Formation Quarto ». 21 mars 2024. https://mthevenin.gitlab.io/quarto/.",
+    "crumbs": [
+      "{{<fa solid book>}} Références",
+      "Bibliographie"
+    ]
+  },
+  {
+    "objectID": "graphs.html",
+    "href": "graphs.html",
+    "title": "Graphiques produits",
+    "section": "",
+    "text": "On indique les packages à utiliser pour l’exécution de ce programme. Tidyverse sera utilisé pour la gestion des données, questionr pour le calcul de statiques pondérées\n\n# Packages\nlibrary(tidyverse)\n\n── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n✔ dplyr     1.1.4     ✔ readr     2.1.5\n✔ forcats   1.0.0     ✔ stringr   1.5.1\n✔ ggplot2   3.5.1     ✔ tibble    3.2.1\n✔ lubridate 1.9.3     ✔ tidyr     1.3.1\n✔ purrr     1.0.2     \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\nℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors\n\nlibrary(questionr)\n\nOn localise les bases de données sous R, deux formats principaux .RData et .rds\n\n###############\n# Localisation\n###############\nRep=\"./materiel/\"\nFile=\"TEO1_v4.RData\"\n\n# Montée en table\nload(paste0(Rep,File))\n\nUne brève description de la base de données\n\n# Liste des variables\nnames(teo)\n\n  [1] \"ID\"               \"POIDSI\"           \"SEXEE\"           \n  [4] \"SEXEE_clair\"      \"age_tranches\"     \"taille\"          \n  [7] \"poids\"            \"poids_rec\"        \"S_ETAT\"          \n [10] \"S_ETAT_clair\"     \"F_DIP\"            \"F_DIP_clair\"     \n [13] \"SITUAE\"           \"SITUAE_clair\"     \"P_NSTPTC\"        \n [16] \"P_SATPTC\"         \"cs_act_6T\"        \"cs_act_6T_clair\" \n [19] \"GROUP1\"           \"GROUP1_clair\"     \"INATUE\"          \n [22] \"INATUE_clair\"     \"regionnaise2_11t\" \"L_AUJC\"          \n [25] \"L_AUJC_clair\"     \"L_AUJE\"           \"L_AUJE_clair\"    \n [28] \"L_AUJL\"           \"L_AUJL_clair\"     \"L_AUJP\"          \n [31] \"L_AUJP_clair\"     \"FRAUJ\"            \"FRAUJ_clair\"     \n [34] \"A_PERMIS\"         \"D_DISCRI\"         \"D_DISCRI_clair\"  \n [37] \"D_PQDISC_A\"       \"D_PQDISC_B\"       \"D_PQDISC_C\"      \n [40] \"D_PQDISC_D\"       \"D_PQDISC_E\"       \"D_PQDISC_F\"      \n [43] \"D_PQDISC_G\"       \"D_PQDISC_H\"       \"D_PQDISC_I\"      \n [46] \"D_PQDISC_J\"       \"D_PQDISC_K\"       \"D_PQDISC_L\"      \n [49] \"D_PQDISC_FLAG\"    \"P_DRECH\"          \"P_DISPQ_A\"       \n [52] \"P_DISPQ_B\"        \"P_DISPQ_C\"        \"P_DISPQ_D\"       \n [55] \"P_DISPQ_E\"        \"P_DISPQ_F\"        \"P_DISPQ_G\"       \n [58] \"P_DISPQ_FLAG\"     \"T_VIOLEN\"         \"demarches\"       \n [61] \"T_DIPLOM\"         \"T_DIPLOM_clair\"   \"T_DIPLOP\"        \n [64] \"T_DIPLOP_clair\"   \"cs_mere_6T\"       \"cs_mere_6T_clair\"\n [67] \"cs_pere_6T\"       \"cs_pere_6T_clair\" \"regionnaism2_11t\"\n [70] \"regionnaisp2_11t\" \"TYPM5_MEN\"        \"TYPM5_MEN_clair\" \n [73] \"MATRIE\"           \"MATRIE_clair\"     \"GROUP1CA\"        \n [76] \"GROUP1CA_clair\"   \"ap_renc\"          \"ap_m_civ\"        \n [79] \"ap_m_relig\"       \"C_RCTLIC_A\"       \"C_RCTLIC_B\"      \n [82] \"C_RCTLIC_C\"       \"C_RCTLIC_D\"       \"C_RCTLIC_E\"      \n [85] \"C_RCTLIC_F\"       \"C_RCTLIC_G\"       \"C_RCTLIC_H\"      \n [88] \"C_RCTLIC_I\"       \"C_RCTLIC_J\"       \"C_RCTLIC_K\"      \n [91] \"C_RCTLIC_L\"       \"C_RCTLIC_M\"       \"C_RCTLIC_N\"      \n [94] \"C_RCTLIC_O\"       \"C_RCTLIC_FLAG\"    \"nbunions_t\"      \n [97] \"ma_force\"         \"ma_force_clair\"   \"ma_init\"         \n[100] \"ma_init_clair\"   \n\n# Pondération POIDSSI\nX=data.frame(wtd.table(teo$GROUP1,weights=teo$POIDSI))\n\nCi après, la création des variables nécessaires, en fonction des variables existantes (GROUP1 pour le type de population, DISCRI et group2 utlisées pour ces créations de variables synthétiques)\n\n# Type de population\nteo=mutate(teo,group2=case_when(\n  GROUP1 %in% c(\"1\",\"2\") ~ \"Immigrés (ou natif DOM)\",\n  GROUP1 == \"5\" ~ \"Groupe majoritaire\", \n  GROUP1 %in% c(\"3\",\"4\") & (regionnaism2_11t ==\"France métro\" | regionnaisp2_11t ==\"France métro\")  ~ \"Descendant d'un immigré\",\n  GROUP1 %in% c(\"3\",\"4\") & (regionnaism2_11t !=\"France métro\" & regionnaisp2_11t !=\"France métro\")  ~ \"Descendant 2 immigrés\"\n))\n\n\n# Regroupement modalités DISCRI\nteo = teo %&gt;% mutate(discri=ifelse(D_DISCRI %in% c(\"1\",\"2\"),\"1\",\"0\")) %&gt;%\n  filter(D_DISCRI %in% c(\"1\",\"2\",\"3\"))\n\n# variable origine\nteo=mutate(teo,origine=case_when(\n  GROUP1 %in% c(\"3\",\"4\") & regionnaise2_11t ==\"France métro\" &  regionnaisp2_11t !=\"France métro\"  ~ regionnaisp2_11t,\n  GROUP1 %in% c(\"3\",\"4\") & regionnaise2_11t ==\"France métro\" &  regionnaisp2_11t ==\"France métro\" &  regionnaism2_11t !=\"France métro\" ~ regionnaism2_11t,\n  TRUE  ~ group2\n))\n\nQuelques tris à plat :\n\n# Effectifs bruts (non pondérés)\nfreq(teo$origine)\n\n                           n    % val%\n9999                      15  0.1  0.1\nAfrique subsaharienne    805  3.7  3.7\nAlgérie                 1325  6.1  6.1\nAsie                     567  2.6  2.6\nAutres pays              571  2.6  2.6\nDOM                      654  3.0  3.0\nEspagne/Italie          1652  7.6  7.6\nGroupe majoritaire      3774 17.4 17.4\nImmigrés (ou natif DOM) 9112 42.1 42.1\nMaroc/Tunisie           1124  5.2  5.2\nPortugal                 925  4.3  4.3\nTurquie                  445  2.1  2.1\nUE27                     659  3.0  3.0\nNA                        33  0.2   NA\n\nfreq(teo$GROUP1)\n\n     n    % val%\n1 8405 38.8 38.8\n2  707  3.3  3.3\n3 8126 37.5 37.5\n4  649  3.0  3.0\n5 3774 17.4 17.4\n\nfreq(teo$group2)\n\n                           n    % val%\nDescendant 2 immigrés   5369 24.8 24.8\nDescendant d'un immigré 3370 15.6 15.6\nGroupe majoritaire      3774 17.4 17.5\nImmigrés (ou natif DOM) 9112 42.1 42.1\nNA                        36  0.2   NA\n\n\nConstruction 1er graphique Pop&Soc\n\nX0 = teo %&gt;%\n  group_by(group2) %&gt;%\n  count(discri,wt=POIDSI) %&gt;%\n  mutate(wtd_prop=100*n/sum(n)) %&gt;%\n  filter(discri==1 & !is.na(group2))\n\n\n\n# Idem, avec les pourcentages à coté\nX0 %&gt;%\n  ggplot(aes(x=group2,y=wtd_prop)) +\n  geom_bar(stat=\"identity\") +\n  xlab(\"Origine de l'enquêté\") +\n  ylab(\"En %\") +\n  ylim(0,50) +\n  ggtitle(\"Proportion de personnes déclarant avoir subi des discriminations\") +\n  geom_text(aes(label=sprintf('%0.0f%%',wtd_prop)), position = position_dodge(width = 1), hjust=-0.1) +\n  coord_flip()\n\n\n\n\n\n\n\n\nConstruction 2eme graphique\n\n# Immigré ou natif d'un DOM (Chiffres en NOIR)\nX1 = teo %&gt;%\n  filter(GROUP1 %in% 1:2) %&gt;%\n  group_by(regionnaise2_11t) %&gt;%\n  count(discri,wt=POIDSI) %&gt;%\n  mutate(wtd_prop=100*n/sum(n,na.rm=T)) %&gt;%\n  filter(discri==1)\n\nX1 = X1 %&gt;%\n  rename(origine=regionnaise2_11t)%&gt;%\n  mutate(type=\"Immigré\")\n\n# Fille ou fils d'immigré (Chiffres en ORANGE)\nX2 = teo %&gt;%\n  group_by(origine) %&gt;%\n  count(discri,wt=POIDSI) %&gt;%\n  mutate(wtd_prop=100*n/sum(n,na.rm=T))%&gt;%\n  filter(discri==1)\n\nX2 = X2 %&gt;%\n  filter( origine !=\"Ne sait pas\")%&gt;%\n  mutate(type=\"Fils ou fille d'immigré\")\n\n# Jonction des résultats\nX3=bind_rows(X1,X2)\n\n# Affichage graphique\nggplot(X3) +\n  \n  # On représente la proportion de personnes qui se sentent discriminées (y) selon l'origine (x)\n  # Ceci selon le type de personne immigrée (type)\n  aes(x = origine, fill = type, y = wtd_prop) +\n  \n  # Mode de représentation = Histogramme\n  geom_bar(stat=\"identity\",position = \"dodge\") +\n  \n  # Couleurs indiquéex explicitement\n  scale_fill_manual(values = c(`Fils ou fille d'immigré` = \"#D3781E\", \n                               Immigré = \"#11090E\")) +\n  \n  # Formattage des pourcentages et affichage à coté des barres\n  geom_text(aes(label=sprintf('%0.0f%%',wtd_prop)),\n            position = position_dodge(width = 1), hjust=-0.1) +\n  \n  # Titre du graphique et des axes, limite de l'axe vertical\n  labs(title = \"Proportion de personnes déclarant avoir subi des discriminations\") +\n  ylim(0,50) +\n  xlab(\"Origine de l'enquêté\") +\n  ylab(\"En %\") +\n  \n  # On retourne le graphique\n  coord_flip() +\n  \n  # Position de la légende\n  theme(legend.position=\"bottom\")",
+    "crumbs": [
+      "{{<fa solid  person-chalkboard>}} Support de formation",
+      "Graphiques produits"
+    ]
+  },
+  {
+    "objectID": "metadata.html",
+    "href": "metadata.html",
+    "title": "Métadonnées",
+    "section": "",
+    "text": "Jeu de données/enquêteApproche pédagogique\n\n\n\nNom de l’enquête: Trajectoires Et Origines\nDate de passation: 2008\nOrganisme(s) producteur(s):\n\nInstitut National des Etudes Démographiques\nInsitut National de la Statistique et des Etudes Economiques\n\nUnivers: J’imagine les thématiques, ici Migrations internationales, discrimination, intégration ….\nTaille de l’échantillon: 21800\nInscription de l’enquête dans un programme international: Non\nFPA et métadonnées : https://data.ined.fr/index.php/catalog/258#metadata-coverage\nJeu de données pseudonymisées: https://gitlab.com/mthevenin/website_lifeobs/-/blob/master/materiel/TEO1_v4.RData?ref_type=heads\n\n\n\n\nPré-requis: Avoir déjà utilisé et exploré un fichier de données d’enquête ou de données administratives. L’installation de R Studio et des packages R nécessaires se fera avant la formation.\nObjectif pédagogique: Produire des statistiques avec le logiciel R, libre et gratuit, dans l’interface R Studio, à partir des données anonymisée Teo et reproduire un résultat publié. Article répliqué: Les discriminations : une question de minorités visibles\nType de support: Formation avec accompagnement par formateur",
+    "crumbs": [
+      "{{< fa solid house-user>}} Accueil",
+      "Métadonnées"
+    ]
+  }
+]
