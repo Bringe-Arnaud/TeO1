@@ -1,0 +1,23 @@
+---
+title: "Bibliographie"
+
+date: false
+
+nocite: |
+  @*
+---
+
+
+### Résultats de recherche
+
+::: {#refs-main}
+:::
+
+
+### Logiciels
+
+::: {#refs-software}
+:::
+
+
+

@@ -1,0 +1,40 @@
+--- 
+title: "Métadonnées"
+
+date: false
+---
+
+
+::: {.panel-tabset .nav-pills}
+
+### Jeu de données/enquête
+
+* **Nom de l'enquête**: Trajectoires Et Origines
+
+* **Date de passation**: 2008
+
+* **Organisme(s) producteur(s)**:
+  * [Institut National des Etudes Démographiques]()
+  * [Insitut National de la Statistique et des Etudes Economiques]()
+
+* **Univers**: J'imagine les thématiques, ici Migrations internationales, discrimination, intégration ....
+
+* **Taille de l'échantillon**: 21800
+
+* **Inscription de l'enquête dans un programme international**: Non
+
+* **FPA et métadonnées** : <https://data.ined.fr/index.php/catalog/258#metadata-coverage>
+
+* **Jeu de données pseudonymisées**: <https://gitlab.com/mthevenin/website_lifeobs/-/blob/master/materiel/TEO1_v4.RData?ref_type=heads>
+
+
+### Approche pédagogique
+
+* **Pré-requis**:  Avoir déjà utilisé et exploré un fichier de données d’enquête ou de données administratives. L'installation de R Studio et des packages R nécessaires se fera avant la formation.
+
+* **Objectif pédagogique**:  Produire des statistiques avec le logiciel R, libre et gratuit, dans l'interface R Studio, à partir des données anonymisée Teo et reproduire un résultat publié.
+Article répliqué: [Les discriminations : une question de minorités visibles](https://www.ined.fr/fichier/s_rubrique/19134/466.fr.pdf)
+
+* **Type de support**: Formation avec accompagnement par formateur
+
+:::

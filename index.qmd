@@ -1,25 +1,69 @@
 ---
-title: "Test TeO1"
-format: html
+title: "Débuter avec R"
+subtitle: "Plateforme Universitaire de Données des Grands Moulins (Université Paris Cité)"
+
+author: 
+ - name: "Elodie Baril"
+   affiliation: "Ined"
+   
+ - name: "Arnaud Bringé"
+   affiliation: "Ined"   
+
+#title-block-banner: true
+
+toc: false
 ---
 
-## Quarto
+::: callout-note
 
-Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see <https://quarto.org>.
+* J'ai mis le dépôt gitlab en mode public contrairement au dépôt de la première version: <https://gitlab.com/mthevenin/website_lifeobs2>.
+  * Permet d'accéder à la base de données de la formation.
+  * Permet de récupérer les fichiers du dépôt (conseillé via zip: code => zip).
 
-## Running Code
+:::
 
-When you click the **Render** button a document will be generated that includes both content and the output of embedded code. You can embed code like this:
 
-```{r}
-1 + 1
-```
+<!-- NORMALEMENT UNE SECTION QUI NE SERA PAS MODIFIE -->
+## Le projet Lifeobs
 
-You can add options to executable code like this 
+::: {.box_img}
+![](img1/logo_lo.png)
+:::
 
-```{r}
-#| echo: false
-2 * 2
-```
+[LifeObs](https://lifeobs.site.ined.fr/), l’Observatoire français des parcours de vie, est une infrastructure de recherche qui vise à développer un programme d’enquêtes longitudinales et innovantes sur les comportements familiaux, à accroître la diffusion des données, et à former les utilisateurs.
+LifeObs, lauréat du programme [Équipements structurants pour la recherche » du PIA3 en 2020](https://www.enseignementsup-recherche.gouv.fr/fr/resultats-de-l-appel-manifestations-d-interet-ami-equipements-structurants-pour-la-recherche-esr-47178), est financé sur huit ans à partir de février 2021.
+<br>
 
-The `echo: false` option disables the printing of code (only output is displayed).
+::: {style="margin-top: 30px"} 
+::: {.columns}
+
+::: {.column width="15%"}
+![](img1/logo_anr.png){width=75%} 
+:::
+
+::: {.column width="85%"} 
+>Ce travail a bénéficié d'une aide de l’État gérée par l'Agence Nationale de la Recherche au titre de France 2030 portant la référence ANR-21-ESRE-0037.   
+:::
+
+:::
+:::
+
+<!-- PERSONNES CHARGEES DE LA FORMATION -->
+
+## Formateurs
+
+* {{< fa solid chalkboard-user>}} **Elodie Baril**:
+  * {{< fa solid building-columns>}} Institut National des Etudes Démographiques
+  *  {{< fa solid envelope>}} <elodie.baril@ined.fr>  
+
+<br>
+
+* {{< fa solid chalkboard-user>}} **Arnaud Bringé**:
+  * {{< fa solid building-columns>}} Institut National des Etudes Démographiques
+  * {{< fa solid envelope>}} <arnaud.bringe@ined.fr>
+
+
+
+
+
+

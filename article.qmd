@@ -1,0 +1,10 @@
+---
+title: "Article Population et Société n°466"
+---
+
+
+<p>
+```{=html}
+<iframe src="materiel/article_popsoc.pdf" width=100% height=1000px></iframe>
+```
+</p>

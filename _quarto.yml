@@ -1,0 +1,74 @@
+project: 
+  type: website
+  output-dir: public
+
+lang: fr
+
+website:
+  bread-crumbs: false
+  navbar: false
+  page-footer: 
+    center: "![](img1/logos.png)" 
+  sidebar:
+    align: center
+    style: docked
+    search: false
+    background: "#a94054"
+    barder: false
+    contents:
+      - section: "{{< fa solid house-user>}} Accueil"
+        contents: 
+         - text: "Présentation"
+           href: index.qmd
+         - text: "Métadonnées"
+           href: metadata.qmd
+      - section: "{{<fa solid person-chalkboard>}} Support de formation"
+        contents:
+          - href: support.qmd
+      - section: "{{<fa solid toolbox>}} Materiel"
+        contents:
+          - text: "Dictionnaire des codes"
+            href: dico_code.qmd
+          - text: "Article Population et Société"
+            href: article.qmd  
+          - text: "La base de données"
+            href: "https://gitlab.com/mthevenin/website_lifeobs2/-/blob/master/materiel/TEO1_v4.RData?ref_type=heads"
+      - section: "{{<fa solid book>}} Références"
+        contents: 
+          - text: "Bibliographie"
+            href: biblio.qmd
+
+format: 
+  html: 
+    theme: [simplex, style.scss]
+    css: style.css
+    code-tool:
+      source
+    grid:
+      sidebar-width: 300px
+      body-width: 900px
+      margin-width: 300px
+      gutter-width: 1.5rem
+
+  
+highlight-style: printing   
+    
+date: "05/16/2023"
+lightbox: true   
+
+toc: true
+toc-depth: 4
+
+
+bibliography: 
+  main: biblio1.bib
+  software: biblio2.bib
+
+filters:
+  - multibib
+validate-yaml: false
+
+execute: 
+  cache: true
+  
+        

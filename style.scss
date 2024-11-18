@@ -1,0 +1,88 @@
+// Simplex 5.3.2
+// Bootswatch
+
+//$theme: "simplex" !default;
+
+/*-- scss:defaults --*/
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto');
+
+
+//
+// Color system
+//
+
+$white:    #fff    !default;
+$gray-100: #f8f9fa !default;
+$gray-200: #ddd    !default;
+$gray-300: #ccc    !default;
+$gray-400: #bbb    !default;
+$gray-500: #adb5bd !default;
+$gray-600: #777    !default;
+$gray-700: #444    !default;
+$gray-800: #373a3c !default;
+$gray-900: #212529 !default;
+$black:    #000    !default;
+
+
+$blue:    #34a8de !default;
+$indigo:  #6610f2 !default;
+$purple:  #9b479f !default;
+$pink:    #e83e8c !default;
+$red:     #ce3d3f !default;
+$orange:  #ff6633 !default;
+$yellow:  #ffc107 !default;
+$green:   #90EE90 !default;
+$teal:    #20c997 !default;
+$cyan:    #029acf !default;
+
+$primary:       $blue     !default;
+$secondary:     $white    !default;
+$success:       $teal     !default;
+$info:          $cyan     !default;
+$warning:       $orange   !default;
+$danger:        $yellow   !default;
+$light:         $white    !default;
+$dark:          $gray-800 !default;
+
+
+$link-color: #a94054;
+$code-color: $purple ;
+
+$code-block-stdoutcolor: $purple;
+$code-block-stdoutcolor-light: rgba($code-block-stdoutcolor, 0.5);
+$code-block-stdoutcolor-lighter: $gray-100;
+
+$callout-color-note: $blue;
+$callout-color-important: $red;
+$callout-color-tip: $teal;
+$callout-color-warning: $yellow;
+$callout-color-caution: $orange;
+
+/*-- scss:rules --*/
+
+.cell-output-display pre, .cell-output-stdout pre {
+    background-color: $code-block-stdoutcolor-lighter !important;
+    border: 1.5px solid $code-block-stdoutcolor-light;
+    border-radius: .25rem;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    border: 5px;
+    border-left: 4px;
+    border-left-style: solid;
+    border-left-color: $code-block-stdoutcolor;
+    padding: .4em;
+    padding-top: .2em; 
+    padding-right: 10px ;
+    box-shadow: inset 0 -3em 3em rgba(0, 0, 0, 0), 0 0 0 2px rgb(255, 255, 255),
+    0.3em 0.3em 0.5em rgba(44, 62, 80, 0.5);
+
+}
+
+
+.cell-output pre code {
+    background-color: transparent;
+}
+
+
+

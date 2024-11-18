@@ -1,0 +1,18 @@
+---
+title: "Dictionnaire des Codes"
+author: "????"
+---
+
+::: callout-note
+* [Dictionnaire en pleine page](materiel/dico_code.html)
+
+* En dessous, inséré avec une iframe. Un peu compliqué vu la longueur du fichier.
+
+:::
+
+
+<p>
+```{=html}
+<iframe src="materiel/dico_code.html" width=100% height=5000px></iframe>
+```
+</p>

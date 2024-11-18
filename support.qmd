@@ -1,0 +1,363 @@
+---
+title: "Débuter avec R"
+subtitle: "Support de formation"
+
+format: 
+  pdf: default
+
+date: "false"
+
+
+---
+
+::: callout-note
+
+* Juste le début de la formation d'EB-AB, nativement en format présentation.
+* On peut insérer un support externe via une iframe + lien sur url d'origine.
+* Si le code source de la formation est interne comme ici, on peut ajouter un chapitrage avec plusieurs sous fichiers .qmd, dont le contenu sera accessible via la sidebar (modifier le content du _quarto.yml.
+
+:::
+
+
+## 1. Présentation de R et Rstudio
+
+Logiciel [R](https://www.r-project.org/) créé dans les années 1990 par Robert Gentleman & Ross Ihaka.
+Développé depuis 1997 par la "R-core team" (21 personnes).
+
+* Dernière Version 4.
+
+R est un logiciel libre et gratuit permettant de faire des traitements.
+de données statistiques: 
+
+* Ouvert : tout utilisateur peut ajouter ses fonctions personnelles.
+
+* Transparent : l'utilisateur a accès au code source des fonctions.
+
+* Multiplateforme : Windows, Linux, Mac.
+
+* En constante évolution.
+
+
+### 1.1 Interface de base R
+
+Interface R de base pour coder. On peut l'utiliser comme calculatrice.
+
+::: {.column width=50%}  
+::: {.box_img} 
+![](img2/im_R.png){group="interface"}
+:::
+::: 
+
+**Installation** obligatoire
+(<https://cran.r-project.org/bin/windows/base/>) avant de pouvoir
+installer l'interface Rstudio, plus conviviale, que
+nous allons utiliser.
+
+### 1.2 Interface RStudio
+
+
+Installation RStudio: <https://posit.co/download/rstudio-desktop/>
+
+
+::: {.column width=50%} 
+::: {.box_img} 
+![](img2/im_Rstudio.png){group="interface"}
+:::
+:::
+
+### 1.3 Syntaxe R
+
+* R est sensible à la casse
+* {{< kbd Ctrl-Enter >}} (Windows) ou {{<kbd Cmd-Enter>}} (Mac) pour soumettre le code ou bouton Run
+* Commentaire: #commentaires
+* Pour les chemins il faut inverser les antislash par des slash: `"D:/R/Formation_R"`
+* Les valeurs manquantes: `NA`, `is.na`
+* Opérateurs permis : `==`, `<`, `>`, `!=`, `%in%`
+* Opérateurs logiques : `&`, `|`, `!`
+* {{< kbd F1 >}} sur une fonction R afin d'être dirigé directement vers l'aide ou
+* soumettre `?nomdelafonction`
+* script R : où vous écrivez votre code, enregistré sous .R (s'ouvre
+    avec n'importe quel éditeur de texte)
+* Rmarkdown ou Quarto: pour mettre en forme des documents contenant à
+    la fois du texte, des instructions R et le résultat fourni par R.
+
+### 1.4 Créer son répertoire de travail
+
+*   On peut dire au logiciel où se trouve nos fichiers `setwd("D:/formation/R")`
+
+*   Il est conseillé de créer un nouveau projet (File => New project)
+    lorsque vous commencez un nouveau traitement, tous vos objets R
+    seront sauvegardés (programmes, images, sorties) au même endroit.
+
+*   La commande getwd indique le répertoire sur lequel vous travaillez: `getwd()`
+
+*   Informer en début ou fin de programme quelles versions de R et de
+    packages on utilise: `sessionInfo()`
+
+### 1.5 Installer et activer des packages
+
+*   En clic bouton: cliquer dans la fenêtre en bas à droite de R Studio
+    sur l'onglet Packages, cliquer sur Install et écrire le nom du
+    package
+
+*   En code: 
+
+```{r filename="Installation d'un package"}
+#| eval: false
+ 
+install.packages("questionr")
+```
+
+Ne pas oublier les guillemets entre le nom du package.
+
+
+*   Attention ne pas oublier qu'à chaque fois que vous ouvrez R, et
+    après avoir installer les packages, il faut les charger avec la
+    fonction **`library`**
+
+```{r filename="Chargement d'un package"}
+#| warning: false
+
+library(questionr)
+```
+
+Ou cocher les packages en bas à droite de votre Rstudio dans l'onglet
+"Packages". 
+
+
+## 2. Importer des données
+
+::: callout-note
+Marc: je passe cette section
+:::
+
+## 3. Décrire les données
+
+
+Nous allons utiliser le fichier d'exemple TEO
+
+```{r}
+load("materiel/TEO1_v4.RData")
+```
+
+Pour copier la table sous un autre nom par exemple
+
+```{r}
+teo1<-teo
+```
+
+Le tableau individus x variables sont des data.frame dans R
+
+Tapez le nom du tableau de données puis entrée : affiche le tableau de
+données ou cliquer dans l'interface graphique sur l'icone tableau à
+droite:
+
+::: {.column width=50%}  
+::: {.box_img} 
+![](img2/env_teo.png)
+:::
+:::
+
+### 3.1 Contenu d'une table et type des variables
+
+Plusieurs types de variables : "numeric", "integer", "character" ou
+"factor"
+
+Description de toutes les variables selon leur type
+
+
+::: {.panel-tabset .nav-pills}
+
+### Code
+
+```{r}
+#| eval: false
+
+summary(teo)
+```
+
+### Output
+
+```{r}
+#| echo: false
+summary(teo)
+```
+
+:::
+
+Description de la variable sexe
+
+```{r}
+summary(teo$SEXEE)
+```
+
+Attention on doit toujours mettre *nom de la table***\$***nom de la
+variable*, et pas le nom de la variable seule.
+
+### Voir les valeurs manquantes
+
+```{r}
+valeurs_manquantes<-is.na(teo$F_DIP)
+
+#library(install.packages(DataExplorer))
+library(DataExplorer)
+
+plot_intro(teo)
+
+plot_missing(teo)
+```
+
+### 3.2 Tris à plat: distribution des valeurs
+
+```{r,warning=FALSE}
+table(teo$regionnaisp2_11t)
+# Affichage des valeurs manquantes
+table(teo$regionnaisp2_11t, useNA = "ifany") 
+
+# avec des pourcentages (package questionr)
+freq(teo$regionnaisp2_11t)
+
+#Tris à plat avec pondération 
+result<-wtd.table(teo$regionnaisp2_11t, weights=teo$POIDSI,normwt=T)
+prop.table(result)*100
+```
+
+### 3.3 Tris croisés
+
+```{r, warning=FALSE}
+table(teo$D_DISCRI, teo$SEXEE) 
+
+# avec pondération 
+tw3=wtd.table(teo$D_DISCRI,teo$SEXEE,weights=teo$POIDSI)
+cprop(tw3)
+lprop(tw3)
+```
+
+
+## XX.Tests rendu avec quelques éléments quarto
+
+
+### Texte brut - callout
+
+Aenean placerat luctus tortor vitae molestie. Nulla at aliquet nulla. Sed efficitur tellus orci, sed fringilla lectus laoreet eget. Vivamus maximus quam sit amet arcu dignissim, sed accumsan massa ullamcorper. Sed iaculis tincidunt feugiat. Nulla in est at nunc ultricies dictum ut vitae nunc. Aenean convallis vel diam at malesuada. Suspendisse arcu libero, vehicula tempus ultrices a, placerat sit amet tortor. Sed dictum id nulla commodo mattis. Aliquam mollis, nunc eu tristique faucibus, purus lacus tincidunt nulla, ac pretium lorem nunc ut enim. Curabitur eget mattis nisl, vitae sodales augue. Nam felis massa, bibendum sit amet nulla vel, vulputate rutrum lacus. Aenean convallis odio pharetra nulla mattis consequat.
+
+
+::: callout-note
+
+#### Note
+
+Aenean placerat luctus tortor vitae molestie. Nulla at aliquet nulla. Sed efficitur tellus orci, sed fringilla lectus laoreet eget. Vivamus maximus quam sit amet arcu dignissim, sed accumsan massa ullamcorper. Sed iaculis tincidunt feugiat. Nulla in est at nunc ultricies dictum ut vitae nunc. Aenean convallis vel diam at malesuada. Suspendisse arcu libero, vehicula tempus ultrices a, placerat sit amet tortor. Sed dictum id nulla commodo mattis. Aliquam mollis, nunc eu tristique faucibus, purus lacus tincidunt nulla, ac pretium lorem nunc ut enim. Curabitur eget mattis nisl, vitae sodales augue. Nam felis massa, bibendum sit amet nulla vel, vulputate rutrum lacus. Aenean convallis odio pharetra nulla mattis consequat.
+
+:::
+
+::: callout-tip
+
+#### Tip
+
+Aenean placerat luctus tortor vitae molestie. Nulla at aliquet nulla. Sed efficitur tellus orci, sed fringilla lectus laoreet eget. Vivamus maximus quam sit amet arcu dignissim, sed accumsan massa ullamcorper. Sed iaculis tincidunt feugiat. Nulla in est at nunc ultricies dictum ut vitae nunc. Aenean convallis vel diam at malesuada. Suspendisse arcu libero, vehicula tempus ultrices a, placerat sit amet tortor. Sed dictum id nulla commodo mattis. Aliquam mollis, nunc eu tristique faucibus, purus lacus tincidunt nulla, ac pretium lorem nunc ut enim. Curabitur eget mattis nisl, vitae sodales augue. Nam felis massa, bibendum sit amet nulla vel, vulputate rutrum lacus. Aenean convallis odio pharetra nulla mattis consequat.
+
+:::
+
+::: callout-important
+
+#### Important
+
+Aenean placerat luctus tortor vitae molestie. Nulla at aliquet nulla. Sed efficitur tellus orci, sed fringilla lectus laoreet eget. Vivamus maximus quam sit amet arcu dignissim, sed accumsan massa ullamcorper. Sed iaculis tincidunt feugiat. Nulla in est at nunc ultricies dictum ut vitae nunc. Aenean convallis vel diam at malesuada. Suspendisse arcu libero, vehicula tempus ultrices a, placerat sit amet tortor. Sed dictum id nulla commodo mattis. Aliquam mollis, nunc eu tristique faucibus, purus lacus tincidunt nulla, ac pretium lorem nunc ut enim. Curabitur eget mattis nisl, vitae sodales augue. Nam felis massa, bibendum sit amet nulla vel, vulputate rutrum lacus. Aenean convallis odio pharetra nulla mattis consequat.
+
+:::
+
+::: callout-caution
+
+#### Caution
+
+Aenean placerat luctus tortor vitae molestie. Nulla at aliquet nulla. Sed efficitur tellus orci, sed fringilla lectus laoreet eget. Vivamus maximus quam sit amet arcu dignissim, sed accumsan massa ullamcorper. Sed iaculis tincidunt feugiat. Nulla in est at nunc ultricies dictum ut vitae nunc. Aenean convallis vel diam at malesuada. Suspendisse arcu libero, vehicula tempus ultrices a, placerat sit amet tortor. Sed dictum id nulla commodo mattis. Aliquam mollis, nunc eu tristique faucibus, purus lacus tincidunt nulla, ac pretium lorem nunc ut enim. Curabitur eget mattis nisl, vitae sodales augue. Nam felis massa, bibendum sit amet nulla vel, vulputate rutrum lacus. Aenean convallis odio pharetra nulla mattis consequat.
+
+:::
+
+
+::: callout-warning
+
+#### Warning
+
+Aenean placerat luctus tortor vitae molestie. Nulla at aliquet nulla. Sed efficitur tellus orci, sed fringilla lectus laoreet eget. Vivamus maximus quam sit amet arcu dignissim, sed accumsan massa ullamcorper. Sed iaculis tincidunt feugiat. Nulla in est at nunc ultricies dictum ut vitae nunc. Aenean convallis vel diam at malesuada. Suspendisse arcu libero, vehicula tempus ultrices a, placerat sit amet tortor. Sed dictum id nulla commodo mattis. Aliquam mollis, nunc eu tristique faucibus, purus lacus tincidunt nulla, ac pretium lorem nunc ut enim. Curabitur eget mattis nisl, vitae sodales augue. Nam felis massa, bibendum sit amet nulla vel, vulputate rutrum lacus. Aenean convallis odio pharetra nulla mattis consequat.
+
+:::
+
+
+### Tableaux
+
+#### Tableau markdown entré en manuel
+
+| A | B | C  | D  | E  |
+|---|---|----|----|----|
+| F | 1 | 2  | 3  | 4  |
+| G | 5 | 6  | 7  | 8  |
+| H | 9 | 10 | 11 | 12 |
+
+
+#### Tableau kable
+
+```{r}
+# install.packages("kableExtra")
+# lien exemple: <https://cran.r-project.org/web/packages/kableExtra/vignettes/awesome_table_in_html.html>
+
+
+library(kableExtra)
+dt <- mtcars[1:5, 1:6]
+
+dt %>%
+  kbl() %>%
+  kable_paper("hover", full_width = F)
+
+```
+   
+      
+   
+::: {.columns} 
+
+::: {.column width="47.5%"}
+```{r}
+#| eval: false
+
+library(kableExtra)
+dt <- mtcars[1:5, 1:6]
+
+dt %>%
+  kbl() %>%
+  kable_paper("hover", 
+              full_width = F)
+
+```
+:::
+::: {.column width="5%"}
+:::
+
+::: {.column width="47.5%"}
+```{r}
+#| echo: false
+
+library(kableExtra)
+dt <- mtcars[1:5, 1:6]
+
+dt %>%
+  kbl() %>%
+  kable_paper("hover", full_width = F)
+
+```
+:::
+
+::: 
+
+
+### Graphique programme
+
+```{r}
+x=c(1,2,3,4,5,6)
+y=x*x
+
+plot(y,x)
+```
+
+
+
+
